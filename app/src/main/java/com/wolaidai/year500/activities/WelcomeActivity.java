@@ -1,0 +1,109 @@
+package com.wolaidai.year500.activities;
+
+import android.os.Build;
+import android.os.Bundle;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+
+import com.wolaidai.year500.R;
+
+/**
+ * Created by danielzhang on 15/10/28.
+ */
+public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageChangeListener{
+
+    private ViewPager vp_welcome_image;
+    private LinearLayout ll_welcome_dots;
+
+    private int[] imgIdArray;
+    private ImageView[] mImageViews;
+    private ImageView[] dots;
+    private ImageView dot;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_welcome);
+
+        vp_welcome_image = (ViewPager) findViewById(R.id.vp_welcome_image);
+        ll_welcome_dots = (LinearLayout) findViewById(R.id.ll_welcome_dots);
+
+        imgIdArray = new int[]{ R.mipmap.page3, R.mipmap.page4, R.mipmap.page5 };
+
+        mImageViews = new ImageView[imgIdArray.length];
+        for (int i = 0; i < mImageViews.length; i++) {
+            ImageView imageView = new ImageView(this);
+            mImageViews[i] = imageView;
+            imageView.setBackgroundResource(imgIdArray[i]);
+        }
+
+        dots = new ImageView[mImageViews.length-1];
+        for (int i = 0; i < mImageViews.length-1; i++) {
+            LinearLayout.LayoutParams margin = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            // 设置每个小圆点距离左边的间距
+            margin.setMargins(20, 0, 0, 0);
+            dot = new ImageView(activityThis);
+            // 设置每个小圆点的宽高
+            dot.setLayoutParams(new ViewGroup.LayoutParams(15, 15));
+            dots[i] = dot;
+            if (i == 0) {
+                // 默认选中第一张图片
+                dots[i].setBackgroundResource(R.mipmap.circle);
+            } else {
+                // 其他图片都设置未选中状态
+                dots[i].setBackgroundResource(R.mipmap.dotnot);
+            }
+            ll_welcome_dots.addView(dots[i], margin);
+        }
+        // 设置Adapter
+        vp_welcome_image.setAdapter(new ViewPagerAdapter());
+        // 设置监听，主要是设置点点的背景
+        vp_welcome_image.addOnPageChangeListener(WelcomeActivity.this);
+        // 设置ViewPager的默认项
+        vp_welcome_image.setCurrentItem(0);
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+
+    private class ViewPagerAdapter extends PagerAdapter {
+        @Override
+        public int getCount() {
+            return mImageViews.length;
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object object) {
+            return view == object;
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+        }
+
+        @Override
+        public Object instantiateItem(ViewGroup container, int position) {
+            try {
+                container.addView(mImageViews[position % mImageViews.length], 0);
+            } catch (Exception e) {
+            }
+            return mImageViews[position % mImageViews.length];
+        }
+    }
+}

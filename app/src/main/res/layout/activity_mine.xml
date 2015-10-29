@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mine_background">
+
+    <include
+        android:id="@+id/i_mine_title"
+        layout="@layout/activity_title" />
+
+    <ListView
+        android:id="@+id/lv_mine_button_group"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/i_mine_title"
+        android:layout_marginBottom="150dp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:dividerHeight="5dp"
+        android:orientation="vertical"
+        android:scrollbars="none" />
+
+    <Button
+        android:id="@+id/btn_mine_add_goods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:background="@drawable/button_round_white_brown_press"
+        android:padding="10dp"
+        android:text="@string/mine_button_add_goods" />
+
+    <Button
+        android:id="@+id/btn_mine_add_types"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btn_mine_add_goods"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:background="@drawable/button_round_white_brown_press"
+        android:padding="10dp"
+        android:text="@string/mine_button_add_type" />
+
+
+    <com.wolaidai.year500.widgets.stickygridheaders.DragStickyGridHeadersGridView
+        android:id="@+id/dsghgv_mine_collections"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@id/i_mine_title"
+        android:layout_marginLeft="140dp"
+        android:cacheColorHint="@android:color/transparent"
+        android:listSelector="@android:color/transparent"
+        android:numColumns="2" />
+
+
+</RelativeLayout>

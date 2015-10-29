@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="line_grey_0">#000000</color>
+    <color name="line_grey_1">#333333</color>
+    <color name="line_grey_2">#666666</color>
+    <color name="line_grey_3">#999999</color>
+    <color name="line_grey_4">#CCCCCC</color>
+
+    <color name="main_text_white">#FFFFFF</color>
+    <color name="main_text_blue">#0000FF</color>
+    <color name="main_background_black">#000000</color>
+    <color name="main_button_dark_violet">#7009A9</color>
+    <color name="main_button_light_violet">#A90EFF</color>
+    <color name="main_button_dark_blue">#1934E6</color>
+    <color name="main_button_light_blue">#25BBFF</color>
+    <color name="main_button_dark_red">#D10B0D</color>
+    <color name="main_button_light_red">#FF3A30</color>
+    <color name="main_button_dark_green">#10AC06</color>
+    <color name="main_button_light_green">#1BFF60</color>
+
+
+    <color name="mine_button_dark_orange">#C16123</color>
+    <color name="mine_button_light_orange">#F27A2C</color>
+    <color name="mine_button_light_blue">#29FFFA</color>
+    <color name="mine_button_draw_brown">#7F4032</color>
+    <color name="mine_button_light_brown">#CB6750</color>
+    <color name="mine_button_white">#FFFFFF</color>
+    <color name="mine_background">#183B2C</color>
+
+</resources>

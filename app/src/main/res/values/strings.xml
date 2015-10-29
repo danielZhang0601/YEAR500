@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Year500</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!--主界面-->
+    <string name="main_title">500年，您的私人云藏馆</string>
+    <string name="main_button_learn">共同学习和鉴赏</string>
+    <string name="main_button_mine">我的藏馆</string>
+    <string name="main_button_server">服务</string>
+    <string name="main_button_show">晒宝广场</string>
+
+    <!--我的藏品-->
+    <string name="mine_title">500年，记录着你的印记</string>
+    <string name="mine_button_add_type">新增类别</string>
+    <string name="mine_button_add_goods">新增藏品</string>
+
+
+    <!--登录界面-->
+    <string name="sign_in_button_text">登录</string>
+    <string name="sign_in_text_view_sign_up_text">注册</string>
+    <string name="sign_in_text_view_forget_password_text">忘记密码?</string>
+    <string name="sign_in_edit_text_account_hint_text">手机号码</string>
+    <string name="sign_in_edit_text_password_hint_text">密码</string>
+    <string name="sign_in_account_is_empty">手机号不能为空</string>
+    <string name="sign_in_account_not_match">手机号格式不正确</string>
+    <string name="sign_in_password_is_empty">密码不能为空</string>
+    <string name="sign_in_password_not_match">密码格式不正确</string>
+
+    <!--注册界面-->
+    <string name="sign_up_title">注册</string>
+</resources>
