@@ -19,17 +19,18 @@
             android:screenOrientation="portrait" />
 
         <!--启动界面-->
-        <activity android:name=".activities.WelcomeActivity"
+        <activity android:name=".activities.LaunchActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+        <!--欢迎界面-->
+        <activity android:name=".activities.WelcomeActivity"
+            android:screenOrientation="portrait"/>
         <!--登录界面-->
         <activity
             android:name=".activities.SignInActivity"

@@ -41,8 +41,8 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
             imageView.setBackgroundResource(imgIdArray[i]);
         }
 
-        dots = new ImageView[mImageViews.length-1];
-        for (int i = 0; i < mImageViews.length-1; i++) {
+        dots = new ImageView[mImageViews.length];
+        for (int i = 0; i < mImageViews.length; i++) {
             LinearLayout.LayoutParams margin = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             // 设置每个小圆点距离左边的间距
             margin.setMargins(20, 0, 0, 0);
@@ -74,7 +74,13 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
 
     @Override
     public void onPageSelected(int position) {
-
+        // 遍历数组让当前选中图片下的小圆点设置颜色
+        for (int i = 0; i < dots.length; i++) {
+            if (i == position)
+                dots[i].setBackgroundResource(R.mipmap.circle);
+            else
+                dots[i].setBackgroundResource(R.mipmap.dotnot);
+        }
     }
 
     @Override
