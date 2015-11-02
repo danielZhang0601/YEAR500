@@ -24,15 +24,19 @@ public class YearsAPI {
         ZAsyncHttpClient.post(context, BASE_URL + "?action=userreg", jsonObject.toString(), responseHandler);
     }
 
-    public static void login(Context context, String account, String password, JsonHttpResponseHandler responseHandler) throws JSONException{
+    public static void login(Context context, String account, String password, JsonHttpResponseHandler responseHandler) {
         String url = String.format("%s/userlogin?userphone=%s&userpwd=%s", BASE_URL, account, password);
         ZAsyncHttpClient.get(context, url, responseHandler);
     }
 
-    public static void logout(Context context, String account, JsonHttpResponseHandler responseHandler) throws JSONException{
+    public static void logout(Context context, String account, JsonHttpResponseHandler responseHandler) {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("userphone", account);
-        ZAsyncHttpClient.post(context, BASE_URL + "?action=userlogout", jsonObject.toString(), responseHandler);
+        try {
+            jsonObject.put("userphone", account);
+            ZAsyncHttpClient.post(context, BASE_URL + "?action=userlogout", jsonObject.toString(), responseHandler);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void getCollections(Context context, String json, JsonHttpResponseHandler responseHandler) {

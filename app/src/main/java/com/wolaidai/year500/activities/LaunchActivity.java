@@ -3,7 +3,14 @@ package com.wolaidai.year500.activities;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.wolaidai.year500.R;
+import com.wolaidai.year500.protocols.YearsAPI;
+import com.wolaidai.year500.utils.SharedPreferencesHelper;
+
+import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  * Created by danielzhang on 15/10/29.
@@ -18,8 +25,31 @@ public class LaunchActivity extends BaseActivity{
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(WelcomeActivity.class);
-                activityThis.finish();
+                if (SharedPreferencesHelper.getBoolean(activityThis, getResources().getString(R.string.app_name), "isFirstUse" ,true)) {
+                    startActivity(WelcomeActivity.class);
+                    activityThis.finish();
+                } else {
+                    String account = SharedPreferencesHelper.getString(activityThis, getResources().getString(R.string.app_name), "Account", "");
+                    String password = SharedPreferencesHelper.getString(activityThis, getResources().getString(R.string.app_name), "Password", "");
+                    if (!account.isEmpty() && !password.isEmpty() && account.matches("^1[3|4|5|8][0-9]\\d{4,8}$") && password.matches("^[a-zA-Z0-9]{4,20}")) {
+                        YearsAPI.login(activityThis, account, password, new JsonHttpResponseHandler(){
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                                startActivity(MainActivity.class);
+                                activityThis.finish();
+                            }
+
+                            @Override
+                            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
+                                startActivity(SignInActivity.class);
+                                activityThis.finish();
+                            }
+                        });
+                    } else {
+                        startActivity(SignInActivity.class);
+                        activityThis.finish();
+                    }
+                }
             }
         },1500);
     }

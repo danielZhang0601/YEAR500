@@ -114,22 +114,18 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
         else if (!password.matches("^[a-zA-Z0-9]{4,20}"))
             Toast.makeText(activityThis,R.string.sign_in_password_not_match,Toast.LENGTH_SHORT).show();
         else {
-            try {
-                YearsAPI.login(activityThis, account, password,new JsonHttpResponseHandler(){
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                        super.onSuccess(statusCode, headers, response);
-                        startActivity(MainActivity.class);
-                    }
+            YearsAPI.login(activityThis, account, password,new JsonHttpResponseHandler(){
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                    super.onSuccess(statusCode, headers, response);
+                    startActivity(MainActivity.class);
+                }
 
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                        super.onFailure(statusCode, headers, throwable, errorResponse);
-                    }
-                });
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+                @Override
+                public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                    super.onFailure(statusCode, headers, throwable, errorResponse);
+                }
+            });
         }
     }
 }
