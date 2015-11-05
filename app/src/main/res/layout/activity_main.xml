@@ -46,6 +46,7 @@
             android:layout_weight="1">
 
             <Button
+                android:id="@+id/btn_main_service"
                 android:layout_width="@dimen/main_button_width"
                 android:layout_height="@dimen/main_button_height"
                 android:layout_marginRight="@dimen/main_button_margin"
@@ -55,6 +56,7 @@
                 android:textColor="@color/main_text_white" />
 
             <Button
+                android:id="@+id/btn_main_show"
                 android:layout_width="@dimen/main_button_width"
                 android:layout_height="@dimen/main_button_height"
                 android:layout_marginLeft="@dimen/main_button_margin"
