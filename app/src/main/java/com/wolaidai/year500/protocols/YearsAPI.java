@@ -16,16 +16,9 @@ public class YearsAPI {
     public static final String BASE_URL = "http://172.30.7.126:8080/500nian";
 
     public static void reg(Context context, String account, String password, JsonHttpResponseHandler responseHandler) {
-        JSONObject jsonObject = new JSONObject();
-        try {
-            jsonObject.put("userphone", account);
-            jsonObject.put("userpwd", password);
-            jsonObject.put("useremail", "");
-            jsonObject.put("userequ1", "");
-            ZAsyncHttpClient.post(context, BASE_URL + "?action=userreg", jsonObject.toString(), responseHandler);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        String url = String.format("%s/userreg?userphone=%s&userpwd=%s&useremail=%s&userequ1=%s",
+               BASE_URL, account, password, "", "");
+        ZAsyncHttpClient.get(context, url, responseHandler);
     }
 
     public static void login(Context context, String account, String password, JsonHttpResponseHandler responseHandler) {

@@ -40,4 +40,6 @@
     <string name="sign_up_edit_text_account_hint_text">手机号码</string>
     <string name="sign_up_edit_text_password_hint_text">密码</string>
     <string name="sign_up_loading">注册中...</string>
+    <string name="sign_up_success">注册成功</string>
+    <string name="sign_up_fail">注册失败</string>
 </resources>

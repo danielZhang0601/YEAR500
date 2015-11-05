@@ -14,6 +14,7 @@ import com.wolaidai.year500.R;
 import com.wolaidai.year500.protocols.YearsAPI;
 
 import org.apache.http.Header;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
@@ -72,13 +73,22 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     signUpProgress.dismiss();
-                    Log.e("ZXD", response.toString());
+                    try {
+                        if (response.getString("error").equals("false")) {
+                            Toast.makeText(activityThis, R.string.sign_up_success, Toast.LENGTH_SHORT).show();
+                            activityThis.finish();
+                        } else {
+                            Toast.makeText(activityThis, R.string.sign_up_fail, Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
 
                 @Override
-                public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                     signUpProgress.dismiss();
-                    Log.e("ZXD", "error:" + responseString);
+                    Toast.makeText(activityThis, errorResponse.toString(), Toast.LENGTH_SHORT).show();
                 }
             });
         }
