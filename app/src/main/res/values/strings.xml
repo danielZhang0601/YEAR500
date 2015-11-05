@@ -6,6 +6,8 @@
 
     <string name="response_format">返回码:%1$d,错误%2$s</string>
 
+    <string name="to_be_continued">敬请期待</string>
+
     <!--欢迎界面-->
     <string name="welcome_to_sign_in">注册/登录</string>
 
