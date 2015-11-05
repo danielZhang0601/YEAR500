@@ -18,6 +18,7 @@
     <string name="main_button_mine">我的藏馆</string>
     <string name="main_button_server">服务</string>
     <string name="main_button_show">晒宝广场</string>
+    <string name="main_back_press_warning">再按一次退出</string>
 
     <!--我的藏品-->
     <string name="mine_title">500年，记录着你的印记</string>
