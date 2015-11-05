@@ -25,12 +25,12 @@ public class LaunchActivity extends BaseActivity{
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (SharedPreferencesHelper.getBoolean(activityThis, getResources().getString(R.string.app_name), "isFirstUse" ,true)) {
+                if (SharedPreferencesHelper.getBoolean(activityThis, getString(R.string.app_name), getString(R.string.is_first_use) ,true)) {
                     startActivity(WelcomeActivity.class);
                     activityThis.finish();
                 } else {
-                    String account = SharedPreferencesHelper.getString(activityThis, getResources().getString(R.string.app_name), "Account", "");
-                    String password = SharedPreferencesHelper.getString(activityThis, getResources().getString(R.string.app_name), "Password", "");
+                    String account = SharedPreferencesHelper.getString(activityThis, getResources().getString(R.string.app_name), getString(R.string.account), "");
+                    String password = SharedPreferencesHelper.getString(activityThis, getResources().getString(R.string.app_name), getString(R.string.password), "");
                     if (!account.isEmpty() && !password.isEmpty() && account.matches("^1[3|4|5|8][0-9]\\d{4,8}$") && password.matches("^[a-zA-Z0-9]{4,20}")) {
                         YearsAPI.login(activityThis, account, password, new JsonHttpResponseHandler(){
                             @Override

@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.wolaidai.year500.R;
 import com.wolaidai.year500.protocols.YearsAPI;
+import com.wolaidai.year500.utils.SharedPreferencesHelper;
 
 import org.apache.http.Header;
 import org.json.JSONException;
@@ -106,8 +107,8 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
     }
 
     private void login() {
-        String account = et_sign_in_account.getText().toString();
-        String password = et_sign_in_password.getText().toString();
+        final String account = et_sign_in_account.getText().toString();
+        final String password = et_sign_in_password.getText().toString();
         if (account.isEmpty())
             Toast.makeText(activityThis,R.string.sign_in_account_is_empty,Toast.LENGTH_SHORT).show();
         else if (!account.matches("^1[3|4|5|8][0-9]\\d{4,8}$"))
@@ -125,6 +126,8 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     loginProgress.dismiss();
+                    SharedPreferencesHelper.putString(activityThis, getString(R.string.app_name), getString(R.string.account), account);
+                    SharedPreferencesHelper.putString(activityThis, getString(R.string.app_name), getString(R.string.password), password);
                     startActivity(MainActivity.class);
                     activityThis.finish();
                 }

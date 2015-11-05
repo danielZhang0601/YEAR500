@@ -99,7 +99,7 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_welcome_sign_in_or_up:
-                SharedPreferencesHelper.putBoolean(activityThis, getString(R.string.app_name), "isFirstUse", false);
+                SharedPreferencesHelper.putBoolean(activityThis, getString(R.string.app_name), getString(R.string.is_first_use), false);
                 startActivity(SignInActivity.class);
                 activityThis.finish();
                 break;
