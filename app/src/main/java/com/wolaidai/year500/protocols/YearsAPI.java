@@ -13,15 +13,19 @@ import org.json.JSONObject;
  */
 public class YearsAPI {
 
-    public static final String BASE_URL = "http://172.30.7.140:8080/500nian";
+    public static final String BASE_URL = "http://172.30.7.126:8080/500nian";
 
-    public static void reg(Context context, String account, String password, JsonHttpResponseHandler responseHandler) throws JSONException{
+    public static void reg(Context context, String account, String password, JsonHttpResponseHandler responseHandler) {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("userphone", account);
-        jsonObject.put("userpwd", password);
-        jsonObject.put("useremail", "");
-        jsonObject.put("userequ1", "");
-        ZAsyncHttpClient.post(context, BASE_URL + "?action=userreg", jsonObject.toString(), responseHandler);
+        try {
+            jsonObject.put("userphone", account);
+            jsonObject.put("userpwd", password);
+            jsonObject.put("useremail", "");
+            jsonObject.put("userequ1", "");
+            ZAsyncHttpClient.post(context, BASE_URL + "?action=userreg", jsonObject.toString(), responseHandler);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void login(Context context, String account, String password, JsonHttpResponseHandler responseHandler) {

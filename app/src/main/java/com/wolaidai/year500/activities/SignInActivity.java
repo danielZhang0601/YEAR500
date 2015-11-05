@@ -1,9 +1,11 @@
 package com.wolaidai.year500.activities;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -30,6 +32,7 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
     private Button btn_sign_in_sign_in;
     private Button btn_sign_in_sign_up;
     private Button btn_sign_in_forget_password;
+    private ProgressDialog loginProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,16 +117,22 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
         else if (!password.matches("^[a-zA-Z0-9]{4,20}"))
             Toast.makeText(activityThis,R.string.sign_in_password_not_match,Toast.LENGTH_SHORT).show();
         else {
+            loginProgress = new ProgressDialog(activityThis);
+            loginProgress.setCancelable(false);
+            loginProgress.setMessage(getString(R.string.sign_in_loading));
+            loginProgress.show();
             YearsAPI.login(activityThis, account, password,new JsonHttpResponseHandler(){
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                    super.onSuccess(statusCode, headers, response);
+                    loginProgress.dismiss();
                     startActivity(MainActivity.class);
+                    activityThis.finish();
                 }
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                    super.onFailure(statusCode, headers, throwable, errorResponse);
+                    Toast.makeText(activityThis, String.format(getString(R.string.response_format), statusCode, errorResponse!=null?errorResponse.toString():""), Toast.LENGTH_SHORT).show();
+                    loginProgress.dismiss();
                 }
             });
         }

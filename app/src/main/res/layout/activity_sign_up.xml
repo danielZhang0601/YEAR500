@@ -1,34 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/bg"
     android:orientation="vertical">
 
     <include layout="@layout/activity_title" />
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_max_margin"
         android:orientation="vertical">
-        <LinearLayout
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="0.5dp"
+            android:background="@color/line_grey_3" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/line_grey_3"/>
-            
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/common_control_height" />
+        <EditText
+            android:id="@+id/et_sign_up_account"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_control_height"
+            android:background="@null"
+            android:hint="@string/sign_up_edit_text_account_hint_text"
+            android:imeOptions="flagNoExtractUi"
+            android:inputType="phone"
+            android:longClickable="false"
+            android:maxLength="11"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:singleLine="true"
+            android:textSize="20sp" />
 
-        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:background="@color/line_grey_3" />
 
+        <EditText
+            android:id="@+id/et_sign_up_password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_control_height"
+            android:background="@null"
+            android:hint="@string/sign_up_edit_text_password_hint_text"
+            android:imeOptions="flagNoExtractUi"
+            android:inputType="textVisiblePassword"
+            android:longClickable="false"
+            android:maxLength="20"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:singleLine="true"
+            android:textSize="20sp" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/line_grey_3" />
 
-    </ScrollView>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_sign_up_done"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_max_margin"
+        android:background="@drawable/button_common_style"
+        android:text="@string/sign_up_title"
+        android:textColor="@color/main_text_white"
+        android:textSize="24dp" />
 
 </LinearLayout>

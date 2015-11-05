@@ -15,6 +15,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        findViewById(R.id.iv_activity_back).setVisibility(View.GONE);
         ((TextView) findViewById(R.id.tv_activity_title)).setText(R.string.main_title);
         // init view
         btn_main_mine = (Button) findViewById(R.id.btn_main_mine);

@@ -4,20 +4,24 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.wolaidai.year500.R;
+import com.wolaidai.year500.utils.SharedPreferencesHelper;
 
 /**
  * Created by danielzhang on 15/10/28.
  */
-public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageChangeListener{
+public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
 
     private ViewPager vp_welcome_image;
     private LinearLayout ll_welcome_dots;
+    private Button btn_welcome_sign_in_or_up;
 
     private int[] imgIdArray;
     private ImageView[] mImageViews;
@@ -31,6 +35,8 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
 
         vp_welcome_image = (ViewPager) findViewById(R.id.vp_welcome_image);
         ll_welcome_dots = (LinearLayout) findViewById(R.id.ll_welcome_dots);
+        btn_welcome_sign_in_or_up = (Button) findViewById(R.id.btn_welcome_sign_in_or_up);
+        btn_welcome_sign_in_or_up.setOnClickListener(this);
 
         imgIdArray = new int[]{ R.mipmap.page3, R.mipmap.page4, R.mipmap.page5 };
 
@@ -69,7 +75,8 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+        if (position == mImageViews.length - 1)
+            btn_welcome_sign_in_or_up.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -86,6 +93,17 @@ public class WelcomeActivity extends BaseActivity implements ViewPager.OnPageCha
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_welcome_sign_in_or_up:
+                SharedPreferencesHelper.putBoolean(activityThis, getString(R.string.app_name), "isFirstUse", false);
+                startActivity(SignInActivity.class);
+                activityThis.finish();
+                break;
+        }
     }
 
     private class ViewPagerAdapter extends PagerAdapter {

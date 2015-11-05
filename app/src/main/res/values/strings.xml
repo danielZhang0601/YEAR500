@@ -4,9 +4,15 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <string name="response_format">返回码:%1$d,错误%2$s</string>
+
+    <!--欢迎界面-->
+    <string name="welcome_to_sign_in">注册/登录</string>
+
+
     <!--主界面-->
     <string name="main_title">500年，您的私人云藏馆</string>
-    <string name="main_button_learn">共同学习和鉴赏</string>
+    <string name="main_button_learn">学习和鉴赏</string>
     <string name="main_button_mine">我的藏馆</string>
     <string name="main_button_server">服务</string>
     <string name="main_button_show">晒宝广场</string>
@@ -27,7 +33,11 @@
     <string name="sign_in_account_not_match">手机号格式不正确</string>
     <string name="sign_in_password_is_empty">密码不能为空</string>
     <string name="sign_in_password_not_match">密码格式不正确</string>
+    <string name="sign_in_loading">登录中...</string>
 
     <!--注册界面-->
     <string name="sign_up_title">注册</string>
+    <string name="sign_up_edit_text_account_hint_text">手机号码</string>
+    <string name="sign_up_edit_text_password_hint_text">密码</string>
+    <string name="sign_up_loading">注册中...</string>
 </resources>

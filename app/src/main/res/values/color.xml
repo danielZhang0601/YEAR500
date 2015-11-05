@@ -7,6 +7,10 @@
     <color name="line_grey_3">#999999</color>
     <color name="line_grey_4">#CCCCCC</color>
 
+    <color name="common_button_border">#641616</color>
+    <color name="common_button_bg">#A52525</color>
+    <color name="common_button_press_bg">#FF3838</color>
+
     <color name="main_text_white">#FFFFFF</color>
     <color name="main_text_blue">#0000FF</color>
     <color name="main_background_black">#000000</color>

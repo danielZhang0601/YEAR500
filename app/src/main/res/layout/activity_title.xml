@@ -7,7 +7,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@color/common_button_bg">
 
         <ImageView
             android:id="@+id/iv_activity_back"
@@ -20,9 +21,8 @@
             android:id="@+id/tv_activity_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/main_text_blue"
+            android:textColor="@color/main_text_white"
             android:layout_centerInParent="true"
-            android:text="123"
             android:textSize="20sp" />
 
     </RelativeLayout>
