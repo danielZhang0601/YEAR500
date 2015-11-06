@@ -29,6 +29,7 @@ public class MineGridViewAdapter extends BaseAdapter implements StickyGridHeader
 
     public void setHasHeaderList(List<GoodsBean> hasHeaderList) {
         this.hasHeaderList = hasHeaderList;
+        notifyDataSetChanged();
     }
 
     @Override

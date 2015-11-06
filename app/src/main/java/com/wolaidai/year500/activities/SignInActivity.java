@@ -27,10 +27,8 @@ import org.json.JSONObject;
  */
 public class SignInActivity extends BaseActivity implements View.OnClickListener, View.OnFocusChangeListener {
 
-    private RelativeLayout rl_sign_in_root;
     private EditText et_sign_in_account;
     private EditText et_sign_in_password;
-    private Button btn_sign_in_sign_in;
     private Button btn_sign_in_sign_up;
     private Button btn_sign_in_forget_password;
     private ProgressDialog loginProgress;
@@ -41,17 +39,15 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
         setContentView(R.layout.activity_sign_in);
 
         //init view
-        rl_sign_in_root = (RelativeLayout) findViewById(R.id.rl_sign_in_root);
         et_sign_in_account = (EditText) findViewById(R.id.et_sign_in_account);
         et_sign_in_password = (EditText) findViewById(R.id.et_sign_in_password);
-        btn_sign_in_sign_in = (Button) findViewById(R.id.btn_sign_in_sign_in);
         btn_sign_in_sign_up = (Button) findViewById(R.id.btn_sign_in_sign_up);
         btn_sign_in_forget_password = (Button) findViewById(R.id.btn_sign_in_forget_password);
 
         et_sign_in_account.setOnFocusChangeListener(this);
         et_sign_in_password.setOnFocusChangeListener(this);
-        rl_sign_in_root.setOnClickListener(this);
-        btn_sign_in_sign_in.setOnClickListener(this);
+        findViewById(R.id.rl_sign_in_root).setOnClickListener(this);
+        findViewById(R.id.btn_sign_in_sign_in).setOnClickListener(this);
         btn_sign_in_sign_up.setOnClickListener(this);
         btn_sign_in_forget_password.setOnClickListener(this);
     }
@@ -66,14 +62,14 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
         switch (requestCode) {
             case 100:
                 if (resultCode == Activity.RESULT_OK) {
-                    et_sign_in_account.setText(data.getStringExtra("account"));
-                    et_sign_in_password.setText(data.getStringExtra("password"));
+                    et_sign_in_account.setText(data.getStringExtra(getString(R.string.account)));
+                    et_sign_in_password.setText(data.getStringExtra(getString(R.string.password)));
                     login();
                 }
                 break;
             case 101:
                 if (resultCode == Activity.RESULT_OK)
-                    et_sign_in_account.setText(data.getStringExtra("account"));
+                    et_sign_in_account.setText(data.getStringExtra(getString(R.string.account)));
                 break;
         }
     }
@@ -126,10 +122,18 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     loginProgress.dismiss();
-                    SharedPreferencesHelper.putString(activityThis, getString(R.string.app_name), getString(R.string.account), account);
-                    SharedPreferencesHelper.putString(activityThis, getString(R.string.app_name), getString(R.string.password), password);
-                    startActivity(MainActivity.class);
-                    activityThis.finish();
+                    try {
+                        JSONObject result = response.getJSONObject(getString(R.string.json_result));
+                        String userId = result.getString(getString(R.string.json_id));
+                        SharedPreferencesHelper.putString(activityThis, getString(R.string.app_name), getString(R.string.account), account);
+                        SharedPreferencesHelper.putString(activityThis, getString(R.string.app_name), getString(R.string.password), password);
+                        SharedPreferencesHelper.putString(activityThis, getString(R.string.app_name), getString(R.string.user_id), userId);
+                        startActivity(MainActivity.class);
+                        activityThis.finish();
+                    } catch (JSONException e) {
+                        Toast.makeText(activityThis, R.string.response_error,Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                    }
                 }
 
                 @Override

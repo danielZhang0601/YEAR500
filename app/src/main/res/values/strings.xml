@@ -1,9 +1,23 @@
 <resources>
+
+    <!--SharedPreference-->
     <string name="app_name">Year500</string>
     <string name="is_first_use">IsFirstUse</string>
     <string name="account">Account</string>
     <string name="password">Password</string>
+    <string name="user_id">UserId</string>
+    <!--JSON-->
+    <string name="json_result">result</string>
+    <string name="json_error">error</string>
+    <string name="json_sou_type_list">souTypeList</string>
+    <string name="json_true">true</string>
+    <string name="json_false">false</string>
+    <string name="json_id">id</string>
+    <string name="json_type_name">typename</string>
+    <string name="json_type_count">typecount</string>
 
+
+    <string name="response_error">服务器异常</string>
     <string name="response_format">返回码:%1$d,错误%2$s</string>
 
     <string name="to_be_continued">敬请期待</string>

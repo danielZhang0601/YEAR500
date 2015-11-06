@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.wolaidai.year500.R;
 import com.wolaidai.year500.beans.GoodsBean;
 import com.wolaidai.year500.adapters.MineGridViewAdapter;
@@ -19,9 +20,17 @@ import com.wolaidai.year500.adapters.MineListAdapter;
 import com.wolaidai.year500.beans.TypeBean;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
+import com.wolaidai.year500.protocols.YearsAPI;
+import com.wolaidai.year500.utils.SharedPreferencesHelper;
 import com.wolaidai.year500.widgets.stickygridheaders.DragStickyGridHeadersGridView;
+
+import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by danielzhang on 15/9/18.
@@ -71,13 +80,14 @@ public class MineActivity extends BaseActivity implements View.OnClickListener, 
         dsghgv_mine_collections.setAdapter(goodsAdapter);
         dsghgv_mine_collections.setOnItemClickListener(this);
         dsghgv_mine_collections.setOnUpOutsideListener(this);
-        // 模拟获取数据
-        for (int i = 0; i < 15; i++) {
-            TypeBean type = new TypeBean("类型" + i, (char) ('A' + i) + "", (int) (Math.random() * 100));
-            typeList.add(type);
-        }
-        typeAdapter.notifyDataSetChanged();
-        lv_mine_button_group.performItemClick(null, 0, 0);
+//        // 模拟获取数据
+//        for (int i = 0; i < 15; i++) {
+//            TypeBean type = new TypeBean("类型" + i, (char) ('A' + i) + "", (int) (Math.random() * 100));
+//            typeList.add(type);
+//        }
+        getCollections(SharedPreferencesHelper.getString(activityThis, getString(R.string.app_name), getString(R.string.user_id), ""),
+                SharedPreferencesHelper.getString(activityThis, getString(R.string.app_name), getString(R.string.account), ""));
+//        lv_mine_button_group.performItemClick(null, 0, 0);
     }
 
     @Override
@@ -97,14 +107,15 @@ public class MineActivity extends BaseActivity implements View.OnClickListener, 
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (parent == lv_mine_button_group) {
             goodsList.clear();
-            for (int i = 0; i < typeList.get(position).getCount(); i++) {
-                GoodsBean goods = new GoodsBean();
-                goods.setImageUrl(String.valueOf(i % 4));
-                goods.setType(typeList.get(position).getType() + String.format("%02d", i + 1));
-                int index = i < typeList.get(position).getCount() / 3 ? 0 : i < typeList.get(position).getCount() * 2 / 3 ? 1 : 2;
-                goods.setHeaderId(index);
-                goods.setTypeName(heads[index]);
-                goodsList.add(goods);
+            try {
+                for (int i = 0; i < typeList.get(position).getCount(); i++) {
+                    GoodsBean goods = new GoodsBean();
+                    JSONArray array = new JSONArray(typeList.get(position).getGoodsDetailJson());
+                    
+                    goodsList.add(goods);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
             currentTypePosition = position;
             goodsAdapter.notifyDataSetChanged();
@@ -130,6 +141,46 @@ public class MineActivity extends BaseActivity implements View.OnClickListener, 
                 goodsAdapter.notifyDataSetChanged();
             }
         }
+    }
+
+    private void getCollections(String userId, String account) {
+        YearsAPI.getCollections(activityThis, userId, account, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                try {
+                    if (response.getString(getString(R.string.json_error)).equals(getString(R.string.json_false))) {
+                        typeList = getTypeList(response.getJSONObject(getString(R.string.json_result)).toString());
+                        typeAdapter.setDatas(typeList);
+                        lv_mine_button_group.performItemClick(null, 0, 0);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+            }
+        });
+    }
+
+    private List<TypeBean> getTypeList(String json) throws JSONException {
+        List<TypeBean> list = new ArrayList<TypeBean>();
+        JSONObject object = new JSONObject(json);
+        JSONArray listArray = object.getJSONArray(getString(R.string.json_sou_type_list));
+        for (int i = 0; i < listArray.length(); i++) {
+            TypeBean type = new TypeBean();
+            type.setId(listArray.getJSONObject(i).getString(getString(R.string.json_id)));
+            type.setTitle(listArray.getJSONObject(i).getString(getString(R.string.json_type_name)));
+            type.setType((char) ('A' + i) + "");
+            //数据有问题 暂时做替代方案
+//            type.setCount(Integer.valueOf(listArray.getJSONObject(i).getString(getString(R.string.json_type_count))));
+            type.setGoodsDetailJson(object.getString(type.getId()));
+            //替代方案
+            type.setCount(object.getJSONArray(type.getId()).length());
+            list.add(type);
+        }
+        return list;
     }
 
     private int getStatusHeight(Context context) {

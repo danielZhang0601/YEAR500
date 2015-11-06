@@ -7,6 +7,8 @@ public class TypeBean {
 
     private String title;
     private String type;
+    private String id;
+    private String goodsDetailJson;
     private int count;
 
     public TypeBean(){}
@@ -15,6 +17,14 @@ public class TypeBean {
         this.title = title;
         this.type = type;
         this.count = count;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -31,6 +41,14 @@ public class TypeBean {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getGoodsDetailJson() {
+        return goodsDetailJson;
+    }
+
+    public void setGoodsDetailJson(String goodsDetailJson) {
+        this.goodsDetailJson = goodsDetailJson;
     }
 
     public int getCount() {

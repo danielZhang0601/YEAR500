@@ -36,8 +36,9 @@ public class YearsAPI {
         }
     }
 
-    public static void getCollections(Context context, String json, JsonHttpResponseHandler responseHandler) {
-
+    public static void getCollections(Context context, String userId, String account, JsonHttpResponseHandler responseHandler) {
+        String url = String.format("%s/usersouhome?userid=%s&userphone=%s", BASE_URL, userId,account);
+        ZAsyncHttpClient.get(context, url, responseHandler);
     }
 
     public static void getCollectionDetail() {

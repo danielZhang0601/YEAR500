@@ -1,6 +1,8 @@
 package com.wolaidai.year500.activities;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -53,8 +55,8 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     }
 
     private void signUp() {
-        String account = et_sign_up_account.getText().toString();
-        String password = et_sign_up_password.getText().toString();
+        final String account = et_sign_up_account.getText().toString();
+        final String password = et_sign_up_password.getText().toString();
         if (account.isEmpty())
             Toast.makeText(activityThis, R.string.sign_in_account_is_empty, Toast.LENGTH_SHORT).show();
         else if (!account.matches("^1[3|4|5|8][0-9]\\d{4,8}$"))
@@ -74,8 +76,12 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                     signUpProgress.dismiss();
                     try {
-                        if (response.getString("error").equals("false")) {
+                        if (response.getString(getString(R.string.json_error)).equals(getString(R.string.json_false))) {
                             Toast.makeText(activityThis, R.string.sign_up_success, Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent();
+                            intent.putExtra(getString(R.string.account), account);
+                            intent.putExtra(getString(R.string.password), password);
+                            setResult(Activity.RESULT_OK, intent);
                             activityThis.finish();
                         } else {
                             Toast.makeText(activityThis, R.string.sign_up_fail, Toast.LENGTH_SHORT).show();

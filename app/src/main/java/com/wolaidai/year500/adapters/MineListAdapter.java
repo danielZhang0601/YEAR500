@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.wolaidai.year500.R;
 import com.wolaidai.year500.beans.TypeBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,8 +25,9 @@ public class MineListAdapter extends BaseAdapter {
         mContext = context;
     }
 
-    public void setDatas(List<TypeBean> datas) {
-        this.datas = datas;
+    public void setDatas(List<TypeBean> datalist) {
+            this.datas = datalist;
+            notifyDataSetChanged();
     }
 
     @Override
