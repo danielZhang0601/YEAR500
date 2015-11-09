@@ -49,7 +49,8 @@ public class MineActivity extends BaseActivity implements View.OnClickListener, 
 
     private int currentTypePosition = 0;
 
-    private final String[] heads = {"战国", "秦朝", "宋朝"};
+    //    private final String[] heads = {"战国", "秦朝", "宋朝"};
+    private List<String> heads = new ArrayList<>();
 
     public static void launch(Context context, Bundle bundle) {
         Intent intent = new Intent(context, MineActivity.class);
@@ -87,7 +88,6 @@ public class MineActivity extends BaseActivity implements View.OnClickListener, 
 //        }
         getCollections(SharedPreferencesHelper.getString(activityThis, getString(R.string.app_name), getString(R.string.user_id), ""),
                 SharedPreferencesHelper.getString(activityThis, getString(R.string.app_name), getString(R.string.account), ""));
-//        lv_mine_button_group.performItemClick(null, 0, 0);
     }
 
     @Override
@@ -108,10 +108,19 @@ public class MineActivity extends BaseActivity implements View.OnClickListener, 
         if (parent == lv_mine_button_group) {
             goodsList.clear();
             try {
-                for (int i = 0; i < typeList.get(position).getCount(); i++) {
+                JSONArray array = new JSONArray(typeList.get(position).getGoodsDetailJson());
+                for (int i = 0; i < array.length(); i++) {
+                    String head = array.getJSONObject(i).getString(getString(R.string.json_dynasty_code));
+                    if (!heads.contains(head)) {
+                        heads.add(head);
+                    }
                     GoodsBean goods = new GoodsBean();
-                    JSONArray array = new JSONArray(typeList.get(position).getGoodsDetailJson());
-                    
+                    int index = heads.indexOf(head);
+                    goods.setHeaderId(index);
+                    goods.setTypeName(head);
+                    goods.setImageUrl(array.getJSONObject(i).getString(getString(R.string.json_main_image_url)));
+                    goods.setId(array.getJSONObject(i).getString(getString(R.string.json_id)));
+                    goods.setType(typeList.get(position).getType() + String.format("%02d", i + 1));
                     goodsList.add(goods);
                 }
             } catch (JSONException e) {

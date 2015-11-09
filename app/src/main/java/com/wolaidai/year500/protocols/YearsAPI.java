@@ -3,6 +3,7 @@ package com.wolaidai.year500.protocols;
 import android.content.Context;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.ResponseHandlerInterface;
 import com.wolaidai.year500.networks.ZAsyncHttpClient;
 
 import org.json.JSONException;
@@ -38,6 +39,10 @@ public class YearsAPI {
 
     public static void getCollections(Context context, String userId, String account, JsonHttpResponseHandler responseHandler) {
         String url = String.format("%s/usersouhome?userid=%s&userphone=%s", BASE_URL, userId,account);
+        ZAsyncHttpClient.get(context, url, responseHandler);
+    }
+
+    public static void getImage(Context context, String url, ResponseHandlerInterface responseHandler) {
         ZAsyncHttpClient.get(context, url, responseHandler);
     }
 

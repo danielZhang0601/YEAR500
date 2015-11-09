@@ -9,6 +9,7 @@ public class GoodsBean {
     private String type;
     private String typeName;
     private int headerId;
+    private String id;
 
     public GoodsBean() {}
 
@@ -49,5 +50,13 @@ public class GoodsBean {
 
     public void setTypeName(String typeName) {
         this.typeName = typeName;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

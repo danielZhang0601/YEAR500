@@ -40,7 +40,7 @@ public class LaunchActivity extends BaseActivity{
                             }
 
                             @Override
-                            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
+                            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                                 startActivity(SignInActivity.class);
                                 activityThis.finish();
                             }

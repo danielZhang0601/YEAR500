@@ -13,6 +13,8 @@ import com.wolaidai.year500.R;
 import java.util.List;
 
 import com.wolaidai.year500.beans.GoodsBean;
+import com.wolaidai.year500.protocols.YearsAPI;
+import com.wolaidai.year500.widgets.LoadingImageView;
 import com.wolaidai.year500.widgets.stickygridheaders.StickyGridHeadersSimpleAdapter;
 
 /**
@@ -73,27 +75,30 @@ public class MineGridViewAdapter extends BaseAdapter implements StickyGridHeader
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.goods_grid_item, null);
             viewHolder = new ViewHolder();
-            viewHolder.iv_goods_icon = (ImageView) convertView.findViewById(R.id.iv_goods_icon);
+            viewHolder.iv_goods_icon = (LoadingImageView) convertView.findViewById(R.id.iv_goods_icon);
             viewHolder.tv_goods_text = (TextView) convertView.findViewById(R.id.tv_goods_text);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        if (hasHeaderList.get(position).getImageUrl().equals("0")) {
-            viewHolder.iv_goods_icon.setImageResource(R.mipmap.pic1);
-        }else if (hasHeaderList.get(position).getImageUrl().equals("1")) {
-            viewHolder.iv_goods_icon.setImageResource(R.mipmap.pic2);
-        }else if (hasHeaderList.get(position).getImageUrl().equals("2")) {
-            viewHolder.iv_goods_icon.setImageResource(R.mipmap.pic3);
-        }else if (hasHeaderList.get(position).getImageUrl().equals("3")) {
-            viewHolder.iv_goods_icon.setImageResource(R.mipmap.pic4);
-        }
+        //临时替代 每天更新
+        String url = "http://7xkbp1.com1.z0.glb.clouddn.com/U1440139979366-S1440165538460-I1445155398515?imageView2/1/w/111/h/111/q/24&e=1447062771&token=eY5FxmhOnLWXx7BXbhnmIVYlpsF-U_GBAKUKdtTV:Ni6qAu_JXFH-tSGNXrxDfwweY5E=";
+        YearsAPI.getImage(mContext,url,viewHolder.iv_goods_icon.getAsyncHttpResponseHandler());
+//        if (hasHeaderList.get(position).getImageUrl().equals("0")) {
+//            viewHolder.iv_goods_icon.setImageResource(R.mipmap.pic1);
+//        }else if (hasHeaderList.get(position).getImageUrl().equals("1")) {
+//            viewHolder.iv_goods_icon.setImageResource(R.mipmap.pic2);
+//        }else if (hasHeaderList.get(position).getImageUrl().equals("2")) {
+//            viewHolder.iv_goods_icon.setImageResource(R.mipmap.pic3);
+//        }else if (hasHeaderList.get(position).getImageUrl().equals("3")) {
+//            viewHolder.iv_goods_icon.setImageResource(R.mipmap.pic4);
+//        }
         viewHolder.tv_goods_text.setText(hasHeaderList.get(position).getType());
         return convertView;
     }
 
     class ViewHolder {
-        ImageView iv_goods_icon;
+        LoadingImageView iv_goods_icon;
         TextView tv_goods_text;
     }
 
