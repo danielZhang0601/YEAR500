@@ -14,8 +14,8 @@
             android:id="@+id/iv_activity_back"
             android:layout_width="48dp"
             android:layout_height="match_parent"
-            android:padding="8dp"
-            android:src="@mipmap/title_back"/>
+            android:padding="12dp"
+            android:src="@mipmap/back"/>
 
         <TextView
             android:id="@+id/tv_activity_title"
