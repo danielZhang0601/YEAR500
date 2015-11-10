@@ -8,6 +8,7 @@ import android.graphics.Rect;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -107,6 +108,7 @@ public class DragStickyGridHeadersGridView extends StickyGridHeadersGridView {
                 mDownX = (int) ev.getX();
                 mDownY = (int) ev.getY();
                 mDragPosition = pointToPosition(mDownX, mDownY);
+                Log.e("ZXD", "mDragPosition:" + mDragPosition);
 
                 if (mDragPosition == AdapterView.INVALID_POSITION) {
                     return super.dispatchTouchEvent(ev);

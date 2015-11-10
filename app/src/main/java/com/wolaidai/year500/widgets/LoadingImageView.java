@@ -71,8 +71,15 @@ public class LoadingImageView extends LinearLayout {
     }
 
     private void setImage(byte[] bytes) {
+
+        //防止 OOM
         BitmapFactory bitmapFactory = new BitmapFactory();
-        Bitmap bitmap = bitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        BitmapFactory.Options opt = new BitmapFactory.Options();
+        opt.inJustDecodeBounds = true;
+        bitmapFactory.decodeByteArray(bytes, 0, bytes.length, opt);
+        opt.inSampleSize = Math.max(opt.outWidth / getWidth(), opt.outHeight / getHeight());
+        opt.inJustDecodeBounds = false;
+        Bitmap bitmap = bitmapFactory.decodeByteArray(bytes, 0, bytes.length, opt);
         iv_loading_image_view.setImageBitmap(bitmap);
         iv_loading_image_view.setVisibility(View.VISIBLE);
         pb_loading_progress_bar.setVisibility(View.INVISIBLE);

@@ -10,6 +10,7 @@ public class TypeBean {
     private String id;
     private String goodsDetailJson;
     private int count;
+    private boolean isSelected;
 
     public TypeBean(){}
 
@@ -57,5 +58,13 @@ public class TypeBean {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setIsSelected(boolean isSelected) {
+        this.isSelected = isSelected;
     }
 }

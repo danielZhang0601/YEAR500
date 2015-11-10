@@ -82,7 +82,7 @@ public class MineGridViewAdapter extends BaseAdapter implements StickyGridHeader
             viewHolder = (ViewHolder) convertView.getTag();
         }
         //临时替代 每天更新
-        String url = "http://7xkbp1.com1.z0.glb.clouddn.com/U1440139979366-S1440165538460-I1445155398515?imageView2/1/w/111/h/111/q/24&e=1447062771&token=eY5FxmhOnLWXx7BXbhnmIVYlpsF-U_GBAKUKdtTV:Ni6qAu_JXFH-tSGNXrxDfwweY5E=";
+        String url = "http://7xkbp1.com1.z0.glb.clouddn.com/U1440139979366-S1440165538460-I1445155398515?imageView2/1/w/111/h/111/q/24&e=1447155249&token=eY5FxmhOnLWXx7BXbhnmIVYlpsF-U_GBAKUKdtTV:aLHTg1oGFG2gZ89X-UAQymm3dLA=";
         YearsAPI.getImage(mContext,url,viewHolder.iv_goods_icon.getAsyncHttpResponseHandler());
 //        if (hasHeaderList.get(position).getImageUrl().equals("0")) {
 //            viewHolder.iv_goods_icon.setImageResource(R.mipmap.pic1);

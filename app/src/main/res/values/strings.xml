@@ -16,6 +16,7 @@
     <string name="json_type_name">typename</string>
     <string name="json_type_count">typecount</string>
     <string name="json_dynasty_code">dynastycode</string>
+    <string name="json_dynasty_name">dynastyname</string>
     <string name="json_main_image_url">mainImageURL</string>
 
 
@@ -40,6 +41,9 @@
     <string name="mine_title">500年，记录着你的印记</string>
     <string name="mine_button_add_type">新增类别</string>
     <string name="mine_button_add_goods">新增藏品</string>
+    <string name="mine_loading">更新中</string>
+    <string name="mine_load_done">更新成功</string>
+    <string name="mine_load_error">更新失败</string>
 
 
     <!--登录界面-->
@@ -61,4 +65,5 @@
     <string name="sign_up_loading">注册中...</string>
     <string name="sign_up_success">注册成功</string>
     <string name="sign_up_fail">注册失败</string>
+
 </resources>

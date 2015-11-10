@@ -10,6 +10,9 @@ public class GoodsBean {
     private String typeName;
     private int headerId;
     private String id;
+    private int row;
+    private int column;
+    private int pressPosition;
 
     public GoodsBean() {}
 
@@ -58,5 +61,29 @@ public class GoodsBean {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public int getColumn() {
+        return column;
+    }
+
+    public void setColumn(int column) {
+        this.column = column;
+    }
+
+    public int getPressPosition() {
+        return pressPosition;
+    }
+
+    public void setPressPosition(int pressPosition) {
+        this.pressPosition = pressPosition;
     }
 }
