@@ -1,12 +1,14 @@
 package com.wolaidai.year500.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -100,9 +102,7 @@ public class MineActivity extends BaseActivity implements View.OnClickListener, 
             case R.id.btn_mine_add_goods:
                 break;
             case R.id.btn_mine_add_types:
-                TypeBean type = new TypeBean("类型" + typeList.size(), (char) ('A' + typeList.size()) + "", (int) (Math.random() * 100));
-                typeList.add(type);
-                typeAdapter.notifyDataSetChanged();
+                showAddTypeDialog();
                 break;
         }
     }
@@ -161,9 +161,6 @@ public class MineActivity extends BaseActivity implements View.OnClickListener, 
 //                    goods.setType(typeList.get(position).getType() + String.format("%03d", positionCount));
                     goodsList.add(goods);
                 }
-                for (int i = 0; i < goodsList.size(); i++) {
-                    Log.e("ZXD", "good at " + i + " :" + goodsList.get(i).getId() + " " + goodsList.get(i).getType() + " " + goodsList.get(i).getTypeName());
-                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -172,7 +169,9 @@ public class MineActivity extends BaseActivity implements View.OnClickListener, 
             typeAdapter.notifyDataSetChanged();
             goodsAdapter.notifyDataSetChanged();
         } else if (parent == dsghgv_mine_collections) {
-
+            Intent intent = new Intent(activityThis, CollectionDetailActivity.class);
+//            intent.putExtra();
+            startActivity(intent);
         }
     }
 
@@ -184,7 +183,6 @@ public class MineActivity extends BaseActivity implements View.OnClickListener, 
                     (int) rawY - lv_mine_button_group.getTop()
                             - getStatusHeight(parent.getContext()));
             if (listPosition != ListView.INVALID_POSITION && listPosition != currentTypePosition) {
-                Log.e("ZXD", "listPosition" + listPosition);
                 netDialog = new ProgressDialog(activityThis);
                 netDialog.setMessage(getString(R.string.mine_loading));
                 netDialog.setCancelable(false);
@@ -257,6 +255,13 @@ public class MineActivity extends BaseActivity implements View.OnClickListener, 
             list.add(type);
         }
         return list;
+    }
+
+    private void showAddTypeDialog() {
+        AlertDialog addTypeDialog = new AlertDialog.Builder(activityThis).create();
+        View layout = LayoutInflater.from(activityThis).inflate(R.layout.dialog_add_type, null);
+        addTypeDialog.setView(layout);
+        addTypeDialog.show();
     }
 
     private int getStatusHeight(Context context) {
