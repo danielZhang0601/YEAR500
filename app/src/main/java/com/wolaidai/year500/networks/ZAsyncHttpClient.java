@@ -16,7 +16,7 @@ public class ZAsyncHttpClient {
     private static AsyncHttpClient client = new AsyncHttpClient();
 
     static {
-        client.setConnectTimeout(5000);
+        client.setTimeout(5000);
         // client.setSSLSocketFactory(sslSocketFactory);
     }
 

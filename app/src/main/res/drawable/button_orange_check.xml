@@ -3,7 +3,7 @@
     <item android:state_pressed="true">
 
         <shape>
-            <solid android:color="@color/mine_button_dark_orange" />
+            <solid android:color="@color/mine_button_dark_grey" />
             <stroke android:width="2dp" android:color="@color/main_button_light_red" />
         </shape>
 
@@ -12,7 +12,7 @@
     <item android:state_pressed="false">
 
         <shape>
-            <solid android:color="@color/mine_button_light_orange" />
+            <solid android:color="@color/mine_button_light_grey" />
             <stroke android:width="2dp" android:color="@color/main_button_light_red" />
         </shape>
 

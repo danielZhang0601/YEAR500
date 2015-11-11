@@ -11,37 +11,13 @@
     <ListView
         android:id="@+id/lv_mine_button_group"
         android:layout_width="110dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/i_mine_title"
-        android:layout_marginBottom="150dp"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:dividerHeight="5dp"
+        android:dividerHeight="8dp"
         android:orientation="vertical"
         android:scrollbars="none" />
-
-    <Button
-        android:id="@+id/btn_mine_add_goods"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:background="@drawable/button_round_white_brown_press"
-        android:padding="10dp"
-        android:text="@string/mine_button_add_goods" />
-
-    <Button
-        android:id="@+id/btn_mine_add_types"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/btn_mine_add_goods"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:background="@drawable/button_round_white_brown_press"
-        android:padding="10dp"
-        android:text="@string/mine_button_add_type" />
-
 
     <com.wolaidai.year500.widgets.stickygridheaders.DragStickyGridHeadersGridView
         android:id="@+id/dsghgv_mine_collections"
@@ -53,5 +29,44 @@
         android:listSelector="@android:color/transparent"
         android:numColumns="2" />
 
+    <LinearLayout
+        android:id="@+id/ll_mine_button_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:background="@color/white">
+
+        <Button
+            android:id="@+id/btn_mine_add_types"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:background="@drawable/button_common_style"
+            android:padding="10dp"
+            android:text="@string/mine_button_add_type"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btn_mine_add_goods"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:background="@drawable/button_common_style"
+            android:padding="10dp"
+            android:text="@string/mine_button_add_goods"
+            android:textColor="@color/white" />
+
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/ll_mine_button_group"
+        android:background="@color/line_grey_1"/>
 
 </RelativeLayout>

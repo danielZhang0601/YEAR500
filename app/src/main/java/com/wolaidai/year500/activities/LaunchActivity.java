@@ -44,6 +44,12 @@ public class LaunchActivity extends BaseActivity{
                                 startActivity(SignInActivity.class);
                                 activityThis.finish();
                             }
+
+                            @Override
+                            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                                startActivity(SignInActivity.class);
+                                activityThis.finish();
+                            }
                         });
                     } else {
                         startActivity(SignInActivity.class);

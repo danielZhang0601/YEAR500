@@ -68,7 +68,7 @@
         android:layout_marginTop="@dimen/activity_max_margin"
         android:background="@drawable/button_common_style"
         android:text="@string/sign_up_title"
-        android:textColor="@color/main_text_white"
+        android:textColor="@color/white"
         android:textSize="24dp" />
 
 </LinearLayout>

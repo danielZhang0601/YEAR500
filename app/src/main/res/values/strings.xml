@@ -28,6 +28,10 @@
     <!--欢迎界面-->
     <string name="welcome_to_sign_in">注册/登录</string>
 
+    <!--网络配置-->
+    <string name="net_server_url">服务器地址：</string>
+    <string name="net_accept">确定</string>
+    <string name="net_cancel">取消</string>
 
     <!--主界面-->
     <string name="main_title">500年，您的私人云藏馆</string>
