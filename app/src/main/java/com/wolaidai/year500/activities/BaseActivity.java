@@ -3,7 +3,8 @@ package com.wolaidai.year500.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
+
+import com.umeng.analytics.MobclickAgent;
 
 /**
  * Created by danielzhang on 15/9/30.
@@ -21,11 +22,13 @@ public class BaseActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        MobclickAgent.onResume(activityThis);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        MobclickAgent.onPause(activityThis);
     }
 
     public void startActivity(Class<?> toClass) {
