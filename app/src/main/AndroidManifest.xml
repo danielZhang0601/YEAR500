@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".AppApplication"
@@ -19,32 +19,32 @@
         <!-- Caution! Do not change this app key. It is only for demo usage. -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="5642ea7667e58eb26b0010e6" >
-        </meta-data>
+            android:value="5642ea7667e58eb26b0010e6" />
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="official" >
-        </meta-data>
+            android:value="official" />
 
         <service
             android:name="com.umeng.update.net.DownloadingService"
-            android:process=":DownloadingService" >
-        </service>
+            android:process=":DownloadingService" />
+
         <activity
             android:name="com.umeng.update.UpdateDialogActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-        </activity>
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <activity
             android:name=".activities.MainActivity"
-            android:label="@string/app_name" />
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
         <!--我的藏馆-->
         <activity
             android:name=".activities.MineActivity"
             android:screenOrientation="portrait" />
 
         <!--启动界面-->
-        <activity android:name=".activities.LaunchActivity"
+        <activity
+            android:name=".activities.LaunchActivity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
@@ -54,14 +54,15 @@
             </intent-filter>
         </activity>
         <!--欢迎界面-->
-        <activity android:name=".activities.WelcomeActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activities.WelcomeActivity"
+            android:screenOrientation="portrait" />
         <!--登录界面-->
         <activity
             android:name=".activities.SignInActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <!--注册界面-->
         <activity
             android:name=".activities.SignUpActivity"
@@ -69,6 +70,10 @@
         <!--找回密码界面-->
         <activity
             android:name=".activities.ForgetPasswordActivity"
+            android:screenOrientation="portrait" />
+        <!--物品详情界面-->
+        <activity
+            android:name=".activities.CollectionDetailActivity"
             android:screenOrientation="portrait" />
     </application>
 

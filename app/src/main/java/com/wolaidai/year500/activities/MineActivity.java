@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -257,10 +258,22 @@ public class MineActivity extends BaseActivity implements View.OnClickListener, 
         return list;
     }
 
+    private DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            if (which == DialogInterface.BUTTON_POSITIVE) {
+                
+            }
+        }
+    };
+
     private void showAddTypeDialog() {
         AlertDialog addTypeDialog = new AlertDialog.Builder(activityThis).create();
         View layout = LayoutInflater.from(activityThis).inflate(R.layout.dialog_add_type, null);
         addTypeDialog.setView(layout);
+        addTypeDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.add_type_accept), dialogClickListener);
+        addTypeDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(R.string.add_type_cancel), dialogClickListener);
+        addTypeDialog.setCancelable(false);
         addTypeDialog.show();
     }
 

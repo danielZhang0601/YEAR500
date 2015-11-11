@@ -48,8 +48,9 @@
     <string name="mine_loading">更新中</string>
     <string name="mine_load_done">更新成功</string>
     <string name="mine_load_error">更新失败</string>
-
-
+    <string name="dialog_add_type_title">藏品类型</string>
+    <string name="add_type_accept">确定</string>
+    <string name="add_type_cancel">取消</string>
     <!--登录界面-->
     <string name="sign_in_button_text">登录</string>
     <string name="sign_in_text_view_sign_up_text">注册</string>

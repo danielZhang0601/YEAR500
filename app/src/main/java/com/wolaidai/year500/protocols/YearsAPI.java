@@ -14,7 +14,7 @@ import org.json.JSONObject;
  */
 public class YearsAPI {
 
-    public static String BASE_URL = "http://172.30.7.128:8080/500nian";
+    public static String BASE_URL = "http://172.30.7.126:8080/500nian";
 
     public static void reg(Context context, String account, String password, JsonHttpResponseHandler responseHandler) {
         String url = String.format("%s/userreg?userphone=%s&userpwd=%s&useremail=%s&userequ1=%s",
