@@ -85,6 +85,11 @@ public class LoadingImageView extends LinearLayout {
         pb_loading_progress_bar.setVisibility(View.INVISIBLE);
     }
 
+    public void setNull() {
+        iv_loading_image_view.setVisibility(View.INVISIBLE);
+        pb_loading_progress_bar.setVisibility(View.INVISIBLE);
+    }
+
     private void hideImage() {
         iv_loading_image_view.setVisibility(View.INVISIBLE);
         pb_loading_progress_bar.setVisibility(View.VISIBLE);

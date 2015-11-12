@@ -171,7 +171,7 @@ public class MineActivity extends BaseActivity implements View.OnClickListener, 
             goodsAdapter.notifyDataSetChanged();
         } else if (parent == dsghgv_mine_collections) {
             Intent intent = new Intent(activityThis, CollectionDetailActivity.class);
-//            intent.putExtra();
+            intent.putExtra(getString(R.string.collection_id), goodsList.get(position).getId());
             startActivity(intent);
         }
     }

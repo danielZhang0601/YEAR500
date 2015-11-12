@@ -6,6 +6,12 @@
     <string name="account">Account</string>
     <string name="password">Password</string>
     <string name="user_id">UserId</string>
+
+
+    <!--数据传递-->
+    <string name="collection_id">CollectionId</string>
+    <string name="create_collection">CreateCollection</string>
+
     <!--JSON-->
     <string name="json_result">result</string>
     <string name="json_error">error</string>
@@ -51,6 +57,19 @@
     <string name="dialog_add_type_title">藏品类型</string>
     <string name="add_type_accept">确定</string>
     <string name="add_type_cancel">取消</string>
+
+    <!--物品详情-->
+    <string name="detail_title">云藏馆</string>
+    <string name="detail_item_detail">物品详细</string>
+    <string name="detail_item_detail_length">长</string>
+    <string name="detail_item_detail_width">宽</string>
+    <string name="detail_item_detail_height">高</string>
+    <string name="detail_item_detail_weight">重量</string>
+    <string name="detail_item_detail_dynasty">年代</string>
+    <string name="detail_item_record">这里记录着你和它的记录</string>
+    <string name="detail_item_story">藏品描述</string>
+    <string name="detail_item_info_loading">加载中&#8230;</string>
+
     <!--登录界面-->
     <string name="sign_in_button_text">登录</string>
     <string name="sign_in_text_view_sign_up_text">注册</string>
@@ -61,13 +80,13 @@
     <string name="sign_in_account_not_match">手机号格式不正确</string>
     <string name="sign_in_password_is_empty">密码不能为空</string>
     <string name="sign_in_password_not_match">密码格式不正确</string>
-    <string name="sign_in_loading">登录中...</string>
+    <string name="sign_in_loading">登录中&#8230;</string>
 
     <!--注册界面-->
     <string name="sign_up_title">注册</string>
     <string name="sign_up_edit_text_account_hint_text">手机号码</string>
     <string name="sign_up_edit_text_password_hint_text">密码</string>
-    <string name="sign_up_loading">注册中...</string>
+    <string name="sign_up_loading">注册中&#8230;</string>
     <string name="sign_up_success">注册成功</string>
     <string name="sign_up_fail">注册失败</string>
 
