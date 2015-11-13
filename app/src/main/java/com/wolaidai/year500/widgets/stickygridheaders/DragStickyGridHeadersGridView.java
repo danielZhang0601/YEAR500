@@ -108,7 +108,6 @@ public class DragStickyGridHeadersGridView extends StickyGridHeadersGridView {
                 mDownX = (int) ev.getX();
                 mDownY = (int) ev.getY();
                 mDragPosition = pointToPosition(mDownX, mDownY);
-                Log.e("ZXD", "mDragPosition:" + mDragPosition);
 
                 if (mDragPosition == AdapterView.INVALID_POSITION) {
                     return super.dispatchTouchEvent(ev);

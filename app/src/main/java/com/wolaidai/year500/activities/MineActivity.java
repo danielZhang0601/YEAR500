@@ -56,7 +56,6 @@ public class MineActivity extends BaseActivity implements View.OnClickListener, 
 
     private int currentTypePosition = 0;
 
-    private final String[] headTemps = {"战国", "秦朝", "宋朝", "南北朝"};
     private List<DynastyBean> heads = new ArrayList<>();
 
     public static void launch(Context context, Bundle bundle) {
@@ -101,6 +100,7 @@ public class MineActivity extends BaseActivity implements View.OnClickListener, 
                 onBackPressed();
                 break;
             case R.id.btn_mine_add_goods:
+                startActivity(CollectionDetailActivity.class);
                 break;
             case R.id.btn_mine_add_types:
                 showAddTypeDialog();
@@ -172,6 +172,7 @@ public class MineActivity extends BaseActivity implements View.OnClickListener, 
         } else if (parent == dsghgv_mine_collections) {
             Intent intent = new Intent(activityThis, CollectionDetailActivity.class);
             intent.putExtra(getString(R.string.collection_id), goodsList.get(position).getId());
+            intent.putExtra(getString(R.string.create_collection), false);
             startActivity(intent);
         }
     }

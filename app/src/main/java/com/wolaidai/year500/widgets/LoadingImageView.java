@@ -1,14 +1,23 @@
 package com.wolaidai.year500.widgets;
 
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.wolaidai.year500.R;
@@ -23,6 +32,11 @@ public class LoadingImageView extends LinearLayout {
     private Context mContext;
     private ImageView iv_loading_image_view;
     private ProgressBar pb_loading_progress_bar;
+    private ImageView iv_loading_image_edit;
+    private boolean isMax = false;
+    private int originalWidth, originalheight;
+    private float originalX, originalY;
+
 
     private AsyncHttpResponseHandler asyncHttpResponseHandler;
 
@@ -50,8 +64,10 @@ public class LoadingImageView extends LinearLayout {
         LayoutInflater.from(mContext).inflate(R.layout.widget_loading_image_view, this);
         iv_loading_image_view = (ImageView) findViewById(R.id.iv_loading_image_view);
         pb_loading_progress_bar = (ProgressBar) findViewById(R.id.pb_loading_progress_bar);
-        iv_loading_image_view.setVisibility(View.INVISIBLE);
+        iv_loading_image_edit = (ImageView) findViewById(R.id.iv_loading_image_edit);
+//        iv_loading_image_view.setVisibility(View.INVISIBLE);
         pb_loading_progress_bar.setVisibility(View.VISIBLE);
+        iv_loading_image_edit.setVisibility(View.INVISIBLE);
     }
 
     public class ImageAsyncHttpResponseHandler extends AsyncHttpResponseHandler {
@@ -88,6 +104,25 @@ public class LoadingImageView extends LinearLayout {
     public void setNull() {
         iv_loading_image_view.setVisibility(View.INVISIBLE);
         pb_loading_progress_bar.setVisibility(View.INVISIBLE);
+    }
+
+    public void scale(int xMax, int yMax) {
+        if (pb_loading_progress_bar.getVisibility() == View.VISIBLE)
+            return;
+        if (!isMax) {
+            originalWidth = getWidth();
+            originalheight = getHeight();
+            originalX = getX();
+            originalY = getY();
+        } else {
+            PropertyValuesHolder xHolder = PropertyValuesHolder.ofFloat("X", 0F, originalX);
+            PropertyValuesHolder yHolder = PropertyValuesHolder.ofFloat("Y", 0F, originalY);
+            PropertyValuesHolder widthHolder = PropertyValuesHolder.ofInt("realWidth", xMax, originalWidth);
+            PropertyValuesHolder heightHolder = PropertyValuesHolder.ofInt("realHeight", yMax, originalheight);
+            ObjectAnimator scaleMin = ObjectAnimator.ofPropertyValuesHolder(this, xHolder, yHolder, widthHolder, heightHolder);
+            scaleMin.setDuration(500).start();
+        }
+        isMax = !isMax;
     }
 
     private void hideImage() {

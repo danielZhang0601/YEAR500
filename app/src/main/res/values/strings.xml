@@ -24,6 +24,14 @@
     <string name="json_dynasty_code">dynastycode</string>
     <string name="json_dynasty_name">dynastyname</string>
     <string name="json_main_image_url">mainImageURL</string>
+    <string name="json_sou_base_info">soubaseinfo</string>
+    <string name="json_length">lengths</string>
+    <string name="json_width">wides</string>
+    <string name="json_height">highs</string>
+    <string name="json_weight">weights</string>
+    <string name="json_user_id">userid</string>
+    <string name="json_sou_venir_type_id">souvenirtypeid</string>
+    <string name="json_record">userrecords</string>
 
 
     <string name="response_error">服务器异常</string>
@@ -69,6 +77,8 @@
     <string name="detail_item_record">这里记录着你和它的记录</string>
     <string name="detail_item_story">藏品描述</string>
     <string name="detail_item_info_loading">加载中&#8230;</string>
+    <string name="detail_item_detail_cm">cm</string>
+    <string name="detail_item_detail_g">g</string>
 
     <!--登录界面-->
     <string name="sign_in_button_text">登录</string>

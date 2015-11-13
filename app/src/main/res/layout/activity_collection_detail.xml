@@ -8,86 +8,89 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
         <LinearLayout
+            android:id="@+id/ll_collection_detail_scroll_root"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/activity_min_margin">
 
-            <GridLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:columnCount="5"
-                android:padding="@dimen/activity_horizontal_margin"
-                android:rowCount="3">
+                android:orientation="vertical">
+
 
                 <com.wolaidai.year500.widgets.LoadingImageView
                     android:id="@+id/liv_collection_detail_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
                     android:background="@drawable/image_border" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_columnWeight="1" />
 
                 <com.wolaidai.year500.widgets.LoadingImageView
                     android:id="@+id/liv_collection_detail_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
                     android:background="@drawable/image_border" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_columnWeight="1" />
 
                 <com.wolaidai.year500.widgets.LoadingImageView
                     android:id="@+id/liv_collection_detail_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin"
                     android:background="@drawable/image_border" />
+
 
                 <com.wolaidai.year500.widgets.LoadingImageView
                     android:id="@+id/liv_collection_detail_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/liv_collection_detail_1"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="@dimen/activity_vertical_margin"
                     android:background="@drawable/image_border" />
 
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_columnWeight="1" />
 
                 <com.wolaidai.year500.widgets.LoadingImageView
                     android:id="@+id/liv_collection_detail_5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/liv_collection_detail_2"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/activity_vertical_margin"
                     android:background="@drawable/image_border" />
 
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_columnWeight="1" />
 
                 <com.wolaidai.year500.widgets.LoadingImageView
                     android:id="@+id/liv_collection_detail_6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/liv_collection_detail_3"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="@dimen/activity_vertical_margin"
                     android:background="@drawable/image_border" />
 
-            </GridLayout>
+
+            </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:background="@color/common_button_bg"
                 android:padding="@dimen/detail_item_title_padding">
 
@@ -107,7 +110,7 @@
 
             </RelativeLayout>
 
-            <GridLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/activity_min_margin"
@@ -115,122 +118,142 @@
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="@dimen/activity_min_margin"
                 android:background="@drawable/view_round_border"
-                android:columnCount="3"
-                android:rowCount="2">
+                android:orientation="vertical"
+                android:padding="@dimen/activity_min_margin">
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginRight="@dimen/activity_horizontal_margin"
-                    android:orientation="horizontal">
+                    android:gravity="center_vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/detail_item_detail_length" />
+                        android:layout_marginRight="@dimen/activity_min_margin"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/et_detail_length"
-                        android:layout_width="match_parent"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/detail_item_detail_length" />
+
+                        <EditText
+                            android:id="@+id/et_collection_detail_length"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/detail_item_detail_cm"
+                            android:inputType="number"
+                            android:maxLength="10"
+                            android:singleLine="true" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:maxLength="5"
-                        android:singleLine="true" />
+                        android:layout_marginLeft="@dimen/activity_min_margin"
+                        android:layout_marginRight="@dimen/activity_min_margin"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/detail_item_detail_width" />
+
+                        <EditText
+                            android:id="@+id/et_collection_detail_width"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/detail_item_detail_cm"
+                            android:inputType="number"
+                            android:maxLength="10"
+                            android:singleLine="true" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/activity_min_margin"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/detail_item_detail_height" />
+
+                        <EditText
+                            android:id="@+id/et_collection_detail_height"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/detail_item_detail_cm"
+                            android:inputType="number"
+                            android:maxLength="10"
+                            android:singleLine="true" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginRight="@dimen/activity_horizontal_margin"
-                    android:orientation="horizontal">
+                    android:gravity="center_vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/detail_item_detail_width" />
+                        android:layout_marginRight="@dimen/activity_max_margin"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/et_detail_width"
-                        android:layout_width="match_parent"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/detail_item_detail_weight" />
+
+                        <EditText
+                            android:id="@+id/et_collection_detail_weight"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/detail_item_detail_g"
+                            android:inputType="number"
+                            android:maxLength="10"
+                            android:singleLine="true" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:maxLength="5"
-                        android:singleLine="true" />
+                        android:layout_marginLeft="@dimen/activity_max_margin"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/detail_item_detail_dynasty" />
+
+                        <EditText
+                            android:id="@+id/et_collection_detail_dynasty"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:background="@drawable/check_box_style"
+                            android:clickable="true"
+                            android:enabled="false"
+                            android:inputType="none" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginRight="@dimen/activity_horizontal_margin"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/detail_item_detail_height" />
-
-                    <EditText
-                        android:id="@+id/et_detail_height"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:maxLength="5"
-                        android:singleLine="true" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginRight="@dimen/activity_horizontal_margin"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/detail_item_detail_weight" />
-
-                    <EditText
-                        android:id="@+id/et_detail_weight"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:maxLength="5"
-                        android:singleLine="true" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginRight="@dimen/activity_horizontal_margin"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/detail_item_detail_dynasty" />
-
-                    <EditText
-                        android:id="@+id/et_detail_dynasty"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:editable="false"
-                        android:enabled="false" />
-
-                </LinearLayout>
-
-            </GridLayout>
+            </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -257,7 +280,7 @@
             </RelativeLayout>
 
             <EditText
-                android:id="@+id/et_detail_record"
+                android:id="@+id/et_collection_detail_record"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/activity_min_margin"
@@ -292,7 +315,7 @@
             </RelativeLayout>
 
             <EditText
-                android:id="@+id/et_detail_story"
+                android:id="@+id/et_collection_detail_story"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
