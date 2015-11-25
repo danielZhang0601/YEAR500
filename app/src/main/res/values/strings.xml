@@ -50,7 +50,7 @@
     <!--主界面-->
     <string name="main_title">500年，您的私人云藏馆</string>
     <string name="main_button_learn">学习和鉴赏</string>
-    <string name="main_button_mine">我的藏馆</string>
+    <string name="main_button_mine">云藏馆</string>
     <string name="main_button_server">服务</string>
     <string name="main_button_show">晒宝广场</string>
     <string name="main_back_press_warning">再按一次退出</string>

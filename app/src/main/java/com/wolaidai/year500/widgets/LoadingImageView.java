@@ -1,6 +1,5 @@
 package com.wolaidai.year500.widgets;
 
-import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Context;
@@ -9,15 +8,10 @@ import android.graphics.BitmapFactory;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.wolaidai.year500.R;
@@ -123,6 +117,10 @@ public class LoadingImageView extends LinearLayout {
             scaleMin.setDuration(500).start();
         }
         isMax = !isMax;
+    }
+
+    public void startTakePicture() {
+        Toast.makeText(getContext(), "调用相机拍照", Toast.LENGTH_SHORT).show();
     }
 
     private void hideImage() {

@@ -126,9 +126,13 @@ public class CollectionDetailActivity extends BaseActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         if (v instanceof LoadingImageView) {
-            int[] location = new int[2];
-            ll_collection_detail_scroll_root.getLocationOnScreen(location);
-            ((LoadingImageView) v).scale(ll_collection_detail_scroll_root.getWidth(), getWindowManager().getDefaultDisplay().getHeight() - location[1]);
+            if (!isCreate) {    //不是添加藏品的时候点击是放大
+                int[] location = new int[2];
+                ll_collection_detail_scroll_root.getLocationOnScreen(location);
+                ((LoadingImageView) v).scale(ll_collection_detail_scroll_root.getWidth(), getWindowManager().getDefaultDisplay().getHeight() - location[1]);
+            } else {            //调用相机拍照
+                ((LoadingImageView) v).startTakePicture();
+            }
         } else {
             switch (v.getId()) {
                 case R.id.iv_activity_back:

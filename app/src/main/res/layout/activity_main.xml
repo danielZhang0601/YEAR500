@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/app_bg"
     tools:context=".MainActivity">
 
     <include layout="@layout/activity_title" />
@@ -18,28 +19,66 @@
             android:layout_marginBottom="@dimen/main_button_margin"
             android:layout_weight="1">
 
-            <Button
-                android:id="@+id/btn_main_learn"
+            <LinearLayout
+                android:id="@+id/btn_main_show"
                 android:layout_width="@dimen/main_button_width"
                 android:layout_height="@dimen/main_button_height"
                 android:layout_marginRight="@dimen/main_button_margin"
-                android:background="@drawable/button_round_violet_press"
-                android:padding="@dimen/activity_horizontal_margin"
-                android:text="@string/main_button_learn"
-                android:textColor="@color/white"
-                android:textSize="@dimen/main_button_text_size"
-                android:textStyle="bold" />
+                android:background="@drawable/button_round_green_press"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <Button
+                <ImageView
+                    android:layout_width="@dimen/main_image_size"
+                    android:layout_height="@dimen/main_image_size"
+                    android:src="@mipmap/shaibao" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/main_button_show"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/main_button_text_size"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:id="@+id/btn_main_mine"
                 android:layout_width="@dimen/main_button_width"
                 android:layout_height="@dimen/main_button_height"
                 android:layout_marginLeft="@dimen/main_button_margin"
                 android:background="@drawable/button_round_blue_press"
-                android:text="@string/main_button_mine"
-                android:textColor="@color/white"
-                android:textSize="@dimen/main_button_text_size"
-                android:textStyle="bold" />
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/main_image_size"
+                    android:layout_height="@dimen/main_image_size"
+                    android:src="@mipmap/yuncangguan" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/main_button_mine"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/main_button_text_size"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!--<Button-->
+                <!--android:id="@+id/btn_main_mine"-->
+                <!--android:layout_width="@dimen/main_button_width"-->
+                <!--android:layout_height="@dimen/main_button_height"-->
+                <!--android:layout_marginLeft="@dimen/main_button_margin"-->
+                <!--android:background="@drawable/button_round_blue_press"-->
+                <!--android:drawableTop="@mipmap/shaibao"-->
+                <!--android:text="@string/main_button_mine"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="@dimen/main_button_text_size"-->
+                <!--android:textStyle="bold" />-->
 
         </LinearLayout>
 
@@ -59,18 +98,21 @@
                 android:text="@string/main_button_server"
                 android:textColor="@color/white"
                 android:textSize="@dimen/main_button_text_size"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="invisible" />
 
             <Button
-                android:id="@+id/btn_main_show"
+                android:id="@+id/btn_main_learn"
                 android:layout_width="@dimen/main_button_width"
                 android:layout_height="@dimen/main_button_height"
                 android:layout_marginLeft="@dimen/main_button_margin"
-                android:background="@drawable/button_round_green_press"
-                android:text="@string/main_button_show"
+                android:background="@drawable/button_round_violet_press"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="@string/main_button_learn"
                 android:textColor="@color/white"
                 android:textSize="@dimen/main_button_text_size"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="invisible" />
         </LinearLayout>
 
     </LinearLayout>

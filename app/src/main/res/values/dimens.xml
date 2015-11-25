@@ -18,6 +18,7 @@
     <dimen name="main_button_height">120dp</dimen>
     <dimen name="main_button_margin">8dp</dimen>
     <dimen name="main_button_text_size">20sp</dimen>
+    <dimen name="main_image_size">72dp</dimen>
 
     <!--物品详情-->
     <dimen name="detail_item_title_padding">8dp</dimen>
