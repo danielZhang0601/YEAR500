@@ -174,7 +174,7 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
             count = 0;
             AlertDialog networkConfigDialog = new AlertDialog.Builder(activityThis).create();
             View view = LayoutInflater.from(activityThis).inflate(R.layout.dialog_network_config, null);
-            et_net_config_url = (EditText)view.findViewById(R.id.et_net_config_url);
+            et_net_config_url = (EditText) view.findViewById(R.id.et_net_config_url);
             et_net_config_url.setText(YearsAPI.BASE_URL);
             networkConfigDialog.setView(view);
             networkConfigDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(R.string.net_accept), dialogClickListener);

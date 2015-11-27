@@ -23,12 +23,6 @@ import org.json.JSONObject;
  */
 public class CollectionDetailActivity extends BaseActivity implements View.OnClickListener {
 
-    private LoadingImageView liv_collection_detail_1;
-    private LoadingImageView liv_collection_detail_2;
-    private LoadingImageView liv_collection_detail_3;
-    private LoadingImageView liv_collection_detail_4;
-    private LoadingImageView liv_collection_detail_5;
-    private LoadingImageView liv_collection_detail_6;
     private EditText et_collection_detail_length;
     private EditText et_collection_detail_width;
     private EditText et_collection_detail_height;
@@ -51,12 +45,6 @@ public class CollectionDetailActivity extends BaseActivity implements View.OnCli
         findViewById(R.id.iv_activity_back).setOnClickListener(this);
         ((TextView) findViewById(R.id.tv_activity_title)).setText(R.string.detail_title);
 
-        liv_collection_detail_1 = (LoadingImageView) findViewById(R.id.liv_collection_detail_1);
-        liv_collection_detail_2 = (LoadingImageView) findViewById(R.id.liv_collection_detail_2);
-        liv_collection_detail_3 = (LoadingImageView) findViewById(R.id.liv_collection_detail_3);
-        liv_collection_detail_4 = (LoadingImageView) findViewById(R.id.liv_collection_detail_4);
-        liv_collection_detail_5 = (LoadingImageView) findViewById(R.id.liv_collection_detail_5);
-        liv_collection_detail_6 = (LoadingImageView) findViewById(R.id.liv_collection_detail_6);
         ll_collection_detail_scroll_root = (LinearLayout) findViewById(R.id.ll_collection_detail_scroll_root);
         et_collection_detail_length = (EditText) findViewById(R.id.et_collection_detail_length);
         et_collection_detail_width = (EditText) findViewById(R.id.et_collection_detail_width);
@@ -68,21 +56,6 @@ public class CollectionDetailActivity extends BaseActivity implements View.OnCli
 
         collectionId = getIntent().getStringExtra(getString(R.string.collection_id));
         isCreate = getIntent().getBooleanExtra(getString(R.string.create_collection), true);
-
-        if (isCreate) {
-            liv_collection_detail_1.setNull();
-            liv_collection_detail_2.setNull();
-            liv_collection_detail_3.setNull();
-            liv_collection_detail_4.setNull();
-            liv_collection_detail_5.setNull();
-            liv_collection_detail_6.setNull();
-        }
-        liv_collection_detail_1.setOnClickListener(this);
-        liv_collection_detail_2.setOnClickListener(this);
-        liv_collection_detail_3.setOnClickListener(this);
-        liv_collection_detail_4.setOnClickListener(this);
-        liv_collection_detail_5.setOnClickListener(this);
-        liv_collection_detail_6.setOnClickListener(this);
     }
 
     @Override

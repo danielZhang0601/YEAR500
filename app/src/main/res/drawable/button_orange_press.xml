@@ -4,7 +4,7 @@
     <item android:state_pressed="true">
 
         <shape>
-            <solid android:color="@color/mine_button_dark_grey" />
+            <solid android:color="@color/mine_button_light_grey" />
             <stroke android:width="2dp" android:color="@color/mine_button_dark_blue" />
         </shape>
 
@@ -13,7 +13,7 @@
     <item android:state_pressed="false">
 
         <shape>
-            <solid android:color="@color/mine_button_light_grey" />
+            <solid android:color="@color/white" />
             <stroke android:width="2dp" android:color="@color/mine_button_dark_blue" />
         </shape>
 
