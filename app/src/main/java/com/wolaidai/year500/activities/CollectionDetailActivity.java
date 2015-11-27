@@ -23,13 +23,8 @@ import org.json.JSONObject;
  */
 public class CollectionDetailActivity extends BaseActivity implements View.OnClickListener {
 
-    private EditText et_collection_detail_length;
-    private EditText et_collection_detail_width;
-    private EditText et_collection_detail_height;
-    private EditText et_collection_detail_weight;
-    private EditText et_collection_detail_dynasty;
-    private EditText et_collection_detail_record;
-    private EditText et_collection_detail_story;
+    private TextView et_collection_detail_record;
+    private TextView et_collection_detail_story;
     private LinearLayout ll_collection_detail_scroll_root;
 
     private ProgressDialog loadDialog;
@@ -46,13 +41,8 @@ public class CollectionDetailActivity extends BaseActivity implements View.OnCli
         ((TextView) findViewById(R.id.tv_activity_title)).setText(R.string.detail_title);
 
         ll_collection_detail_scroll_root = (LinearLayout) findViewById(R.id.ll_collection_detail_scroll_root);
-        et_collection_detail_length = (EditText) findViewById(R.id.et_collection_detail_length);
-        et_collection_detail_width = (EditText) findViewById(R.id.et_collection_detail_width);
-        et_collection_detail_height = (EditText) findViewById(R.id.et_collection_detail_height);
-        et_collection_detail_weight = (EditText) findViewById(R.id.et_collection_detail_weight);
-        et_collection_detail_dynasty = (EditText) findViewById(R.id.et_collection_detail_dynasty);
-        et_collection_detail_record = (EditText) findViewById(R.id.et_collection_detail_record);
-        et_collection_detail_story = (EditText) findViewById(R.id.et_collection_detail_story);
+        et_collection_detail_record = (TextView) findViewById(R.id.et_collection_detail_record);
+        et_collection_detail_story = (TextView) findViewById(R.id.et_collection_detail_story);
 
         collectionId = getIntent().getStringExtra(getString(R.string.collection_id));
         isCreate = getIntent().getBooleanExtra(getString(R.string.create_collection), true);
@@ -123,11 +113,6 @@ public class CollectionDetailActivity extends BaseActivity implements View.OnCli
             String height = response.getJSONObject(getString(R.string.json_sou_base_info)).getString(getString(R.string.json_height));
             String weight = response.getJSONObject(getString(R.string.json_sou_base_info)).getString(getString(R.string.json_weight));
             String dynastyname = response.getJSONObject(getString(R.string.json_sou_base_info)).getString(getString(R.string.json_dynasty_name));
-            et_collection_detail_length.setText(length + getString(R.string.detail_item_detail_cm));
-            et_collection_detail_width.setText(width + getString(R.string.detail_item_detail_cm));
-            et_collection_detail_height.setText(height + getString(R.string.detail_item_detail_cm));
-            et_collection_detail_weight.setText(weight + getString(R.string.detail_item_detail_g));
-            et_collection_detail_dynasty.setText(dynastyname);
         } catch (JSONException e) {
             e.printStackTrace();
         }

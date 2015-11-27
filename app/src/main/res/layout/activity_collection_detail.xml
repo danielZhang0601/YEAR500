@@ -46,6 +46,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
                     android:src="@mipmap/right_arrow" />
 
             </RelativeLayout>
@@ -142,16 +143,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
                     android:src="@mipmap/right_arrow" />
 
             </RelativeLayout>
 
-            <EditText
+            <TextView
                 android:id="@+id/et_collection_detail_record"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/activity_horizontal_margin"
                 android:singleLine="false" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line_grey_2" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -172,16 +179,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
                     android:src="@mipmap/right_arrow" />
 
             </RelativeLayout>
 
-            <EditText
+            <TextView
                 android:id="@+id/et_collection_detail_story"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:singleLine="false"
-                android:padding="@dimen/activity_horizontal_margin" />
+                android:padding="@dimen/activity_horizontal_margin"
+                android:singleLine="false" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line_grey_2" />
+
         </LinearLayout>
     </ScrollView>
 
