@@ -32,6 +32,8 @@
     <string name="json_user_id">userid</string>
     <string name="json_sou_venir_type_id">souvenirtypeid</string>
     <string name="json_record">userrecords</string>
+    <string name="json_sou_images_list">souImagesList</string>
+    <string name="json_user_records">userrecords</string>
 
 
     <string name="response_error">服务器异常</string>
@@ -68,11 +70,11 @@
 
     <!--物品详情-->
     <string name="detail_title">云藏馆</string>
-    <string name="detail_item_detail_length">长</string>
-    <string name="detail_item_detail_width">宽</string>
-    <string name="detail_item_detail_height">高</string>
-    <string name="detail_item_detail_weight">重量</string>
-    <string name="detail_item_detail_dynasty">年代</string>
+    <string name="detail_item_detail_length">长/口径:</string>
+    <string name="detail_item_detail_width">宽/足径:</string>
+    <string name="detail_item_detail_height">高:</string>
+    <string name="detail_item_detail_weight">重量:</string>
+    <string name="detail_item_detail_dynasty">年代:</string>
     <string name="detail_item_record">藏品描述</string>
     <string name="detail_item_story">心得体会</string>
     <string name="detail_item_info_loading">加载中&#8230;</string>

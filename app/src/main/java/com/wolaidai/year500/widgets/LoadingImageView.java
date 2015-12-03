@@ -87,7 +87,7 @@ public class LoadingImageView extends LinearLayout {
         BitmapFactory.Options opt = new BitmapFactory.Options();
         opt.inJustDecodeBounds = true;
         bitmapFactory.decodeByteArray(bytes, 0, bytes.length, opt);
-        opt.inSampleSize = Math.max(opt.outWidth / getWidth(), opt.outHeight / getHeight());
+        opt.inSampleSize = Math.max(opt.outWidth / (getWidth() == 0 ? 200 : getWidth()), opt.outHeight / (getHeight() == 0 ? 200 : getHeight()));
         opt.inJustDecodeBounds = false;
         Bitmap bitmap = bitmapFactory.decodeByteArray(bytes, 0, bytes.length, opt);
         iv_loading_image_view.setImageBitmap(bitmap);

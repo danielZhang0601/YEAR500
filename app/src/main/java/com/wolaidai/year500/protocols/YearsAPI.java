@@ -13,7 +13,7 @@ import org.json.JSONObject;
  */
 public class YearsAPI {
 
-    public static String BASE_URL = "http://172.30.6.211:53333/500nian";
+    public static String BASE_URL = "http://172.30.7.126:53333/500nian";
 
     public static void reg(Context context, String account, String password, AsyncHttpResponseHandler responseHandler) {
         String url = String.format("%s/userreg?userphone=%s&userpwd=%s&useremail=%s&userequ1=%s",
@@ -34,6 +34,11 @@ public class YearsAPI {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void getDynasts(Context context, AsyncHttpResponseHandler responseHandler) {
+        String url = String.format("%s/getdynastydict", BASE_URL);
+        ZAsyncHttpClient.get(context, url, responseHandler);
     }
 
     public static void getCollections(Context context, String userId, String account, AsyncHttpResponseHandler responseHandler) {

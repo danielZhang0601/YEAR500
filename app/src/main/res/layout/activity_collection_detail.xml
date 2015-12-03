@@ -8,8 +8,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/ll_collection_detail_scroll_root"
@@ -20,12 +19,15 @@
             android:paddingBottom="@dimen/activity_min_margin">
 
 
-            <GridView
+            <com.wolaidai.year500.widgets.InSideGridView
                 android:id="@+id/gv_collection_detail_images"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:numColumns="3"
-                android:padding="@dimen/activity_min_margin" />
+                android:padding="@dimen/activity_min_margin"
+                android:scrollbars="none"
+                android:listSelector="@android:color/transparent"
+                android:verticalSpacing="@dimen/activity_vertical_margin" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -35,6 +37,7 @@
                 android:padding="@dimen/activity_horizontal_margin">
 
                 <TextView
+                    android:id="@+id/tv_collection_detail_dynasty"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -62,12 +65,13 @@
                     android:layout_weight="1">
 
                     <TextView
+                        android:id="@+id/tv_collection_detail_length"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="@dimen/activity_horizontal_margin"
-                        android:text="高: 10cm" />
+                        android:text="@string/detail_item_detail_length" />
 
                     <View
                         android:layout_width="1dp"
@@ -75,12 +79,13 @@
                         android:background="@color/line_grey_2" />
 
                     <TextView
+                        android:id="@+id/tv_collection_detail_width"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="@dimen/activity_horizontal_margin"
-                        android:text="高: 10cm" />
+                        android:text="@string/detail_item_detail_width" />
 
                 </LinearLayout>
 
@@ -95,12 +100,13 @@
                     android:layout_weight="1">
 
                     <TextView
+                        android:id="@+id/tv_collection_detail_height"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="@dimen/activity_horizontal_margin"
-                        android:text="高: 10cm" />
+                        android:text="@string/detail_item_detail_height" />
 
                     <View
                         android:layout_width="1dp"
@@ -108,12 +114,13 @@
                         android:background="@color/line_grey_2" />
 
                     <TextView
+                        android:id="@+id/tv_collection_detail_weight"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="@dimen/activity_horizontal_margin"
-                        android:text="高: 10cm" />
+                        android:text="@string/detail_item_detail_weight" />
                 </LinearLayout>
 
                 <View
@@ -197,7 +204,6 @@
                 android:background="@color/line_grey_2" />
 
         </LinearLayout>
+
     </ScrollView>
-
-
 </LinearLayout>

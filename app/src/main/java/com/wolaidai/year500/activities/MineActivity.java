@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.TextHttpResponseHandler;
 import com.wolaidai.year500.R;
 import com.wolaidai.year500.beans.DynastyBean;
 import com.wolaidai.year500.beans.GoodsBean;
@@ -31,6 +32,7 @@ import java.util.List;
 
 import com.wolaidai.year500.protocols.YearsAPI;
 import com.wolaidai.year500.utils.SharedPreferencesHelper;
+import com.wolaidai.year500.utils.YearDynasty;
 import com.wolaidai.year500.widgets.stickygridheaders.DragStickyGridHeadersGridView;
 
 import org.apache.http.Header;
@@ -88,6 +90,8 @@ public class MineActivity extends BaseActivity implements View.OnClickListener, 
         dsghgv_mine_collections.setAdapter(goodsAdapter);
         dsghgv_mine_collections.setOnItemClickListener(this);
         dsghgv_mine_collections.setOnUpOutsideListener(this);
+
+        getDynasts();
 
         getCollections(SharedPreferencesHelper.getString(activityThis, getString(R.string.app_name), getString(R.string.user_id), ""),
                 SharedPreferencesHelper.getString(activityThis, getString(R.string.app_name), getString(R.string.account), ""), 0);
@@ -217,6 +221,20 @@ public class MineActivity extends BaseActivity implements View.OnClickListener, 
 
             }
         }
+    }
+
+    private void getDynasts() {
+        YearsAPI.getDynasts(activityThis, new TextHttpResponseHandler() {
+            @Override
+            public void onFailure(int i, Header[] headers, String s, Throwable throwable) {
+
+            }
+
+            @Override
+            public void onSuccess(int i, Header[] headers, String s) {
+                YearDynasty.getInstance().init(getApplicationContext(), s);
+            }
+        });
     }
 
     private void getCollections(String userId, String account, final int position) {
