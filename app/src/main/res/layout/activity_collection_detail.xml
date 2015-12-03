@@ -30,6 +30,7 @@
                 android:verticalSpacing="@dimen/activity_vertical_margin" />
 
             <RelativeLayout
+                android:id="@+id/rl_collection_detail_modify_base_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
@@ -132,6 +133,7 @@
 
 
             <RelativeLayout
+                android:id="@+id/rl_collection_detail_modify_record"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
@@ -168,6 +170,7 @@
                 android:background="@color/line_grey_2" />
 
             <RelativeLayout
+                android:id="@+id/rl_collection_detail_modify_story"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_vertical_margin"

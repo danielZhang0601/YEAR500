@@ -11,6 +11,8 @@
     <!--数据传递-->
     <string name="collection_id">CollectionId</string>
     <string name="create_collection">CreateCollection</string>
+    <string name="collection_record">CollectionRecord</string>
+    <string name="collection_story">CollectionStory</string>
 
     <!--JSON-->
     <string name="json_result">result</string>
@@ -80,6 +82,9 @@
     <string name="detail_item_info_loading">加载中&#8230;</string>
     <string name="detail_item_detail_cm">cm</string>
     <string name="detail_item_detail_g">g</string>
+
+    <!--物品修改界面-->
+    <string name="modify_title_done_text">确定</string>
 
     <!--登录界面-->
     <string name="sign_in_button_text">登录</string>

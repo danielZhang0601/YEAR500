@@ -2,6 +2,7 @@ package com.wolaidai.year500.activities;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,6 +70,10 @@ public class CollectionDetailActivity extends BaseActivity implements View.OnCli
         imageAdapter.setDatas(images);
         gv_collection_detail_images.setAdapter(imageAdapter);
 
+        findViewById(R.id.rl_collection_detail_modify_base_info).setOnClickListener(this);
+        findViewById(R.id.rl_collection_detail_modify_record).setOnClickListener(this);
+        findViewById(R.id.rl_collection_detail_modify_story).setOnClickListener(this);
+
         tv_collection_detail_dynasty = (TextView) findViewById(R.id.tv_collection_detail_dynasty);
         tv_collection_detail_length = (TextView) findViewById(R.id.tv_collection_detail_length);
         tv_collection_detail_width = (TextView) findViewById(R.id.tv_collection_detail_width);
@@ -123,6 +128,18 @@ public class CollectionDetailActivity extends BaseActivity implements View.OnCli
             case R.id.iv_activity_back:
                 onBackPressed();
                 break;
+            case R.id.rl_collection_detail_modify_base_info:
+                break;
+            case R.id.rl_collection_detail_modify_record:
+                Intent recordIntent = new Intent(activityThis, ModifyRecordActivity.class);
+                recordIntent.putExtra(getString(R.string.collection_record), et_collection_detail_record.getText().toString());
+                startActivity(recordIntent);
+                break;
+            case R.id.rl_collection_detail_modify_story:
+                Intent storyIntent = new Intent(activityThis, ModifyStoryActivity.class);
+                storyIntent.putExtra(getString(R.string.collection_story), et_collection_detail_story.getText().toString());
+                startActivity(storyIntent);
+                break;
         }
     }
 
@@ -137,14 +154,15 @@ public class CollectionDetailActivity extends BaseActivity implements View.OnCli
         images.clear();
         images.addAll(JSON.parseArray(response.getString(getString(R.string.json_sou_images_list)), ImageBean.class));
         images.add(new ImageBean(true));
+        records.clear();
         records.addAll(JSON.parseArray(response.getString(getString(R.string.json_user_records)), RecordBean.class));
 
         //更新view
-        tv_collection_detail_dynasty.append(dynastyname);
-        tv_collection_detail_length.append(length + getString(R.string.detail_item_detail_cm));
-        tv_collection_detail_width.append(width + getString(R.string.detail_item_detail_cm));
-        tv_collection_detail_height.append(height + getString(R.string.detail_item_detail_cm));
-        tv_collection_detail_weight.append(weight + getString(R.string.detail_item_detail_g));
+        tv_collection_detail_dynasty.setText(getString(R.string.detail_item_detail_dynasty) + dynastyname);
+        tv_collection_detail_length.setText(getString(R.string.detail_item_detail_length) + length + getString(R.string.detail_item_detail_cm));
+        tv_collection_detail_width.setText(getString(R.string.detail_item_detail_width) + getString(R.string.detail_item_detail_cm));
+        tv_collection_detail_height.setText(getString(R.string.detail_item_detail_height) + height + getString(R.string.detail_item_detail_cm));
+        tv_collection_detail_weight.setText(getString(R.string.detail_item_detail_height) + weight + getString(R.string.detail_item_detail_g));
 
         String recordStr = "", storyStr = "";
         for (RecordBean record : records) {

@@ -75,6 +75,18 @@
         <activity
             android:name=".activities.CollectionDetailActivity"
             android:screenOrientation="portrait" />
+        <!--修改物品基础信息-->
+        <activity
+            android:name=".activities.ModifyBaseInfoActivity"
+            android:screenOrientation="portrait" />
+        <!--修改物品记录-->
+        <activity
+            android:name=".activities.ModifyRecordActivity"
+            android:screenOrientation="portrait" />
+        <!--修改物品故事-->
+        <activity
+            android:name=".activities.ModifyStoryActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
