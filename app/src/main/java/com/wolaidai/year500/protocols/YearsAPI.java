@@ -8,6 +8,8 @@ import com.wolaidai.year500.networks.ZAsyncHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
+
 /**
  * Created by danielzhang on 15/10/8.
  */
@@ -89,6 +91,24 @@ public class YearsAPI {
 
     public static void findColletion() {
 
+    }
+
+    public static void updateRecord(Context context, String collectionId, String title, String content, AsyncHttpResponseHandler responseHandler) {
+        String url = String.format("%s/createrecord?souvenirid=%s&title=%s&content=%s", BASE_URL, collectionId, title, content);
+        ZAsyncHttpClient.get(context, url, responseHandler);
+    }
+
+    public static void updateRecord(Context context, String collectionId, String title, List<String> contents, AsyncHttpResponseHandler responseHandler) {
+        String contentStr = "";
+        for (int i = 0; i < contents.size(); i++) {
+            if (i < contents.size() - 1) {
+                contentStr += contents.get(i) + "-";
+            } else {
+                contentStr += contents.get(i);
+            }
+        }
+        String url = String.format("%s/updaterecord?souvenirid=%s&title=%s&content=%s", BASE_URL, collectionId, title, contentStr);
+        ZAsyncHttpClient.get(context, url, responseHandler);
     }
 
 }

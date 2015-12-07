@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.LinearLayout;
@@ -30,7 +31,7 @@ import java.util.List;
 /**
  * Created by danielzhang on 15/11/10.
  */
-public class CollectionDetailActivity extends BaseActivity implements View.OnClickListener {
+public class CollectionDetailActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     private TextView et_collection_detail_record;
     private TextView et_collection_detail_story;
@@ -66,6 +67,7 @@ public class CollectionDetailActivity extends BaseActivity implements View.OnCli
         et_collection_detail_story = (TextView) findViewById(R.id.et_collection_detail_story);
 
         gv_collection_detail_images = (GridView) findViewById(R.id.gv_collection_detail_images);
+        gv_collection_detail_images.setOnItemClickListener(this);
         imageAdapter = new GoodsImageAdapter(activityThis);
         imageAdapter.setDatas(images);
         gv_collection_detail_images.setAdapter(imageAdapter);
@@ -132,6 +134,7 @@ public class CollectionDetailActivity extends BaseActivity implements View.OnCli
                 break;
             case R.id.rl_collection_detail_modify_record:
                 Intent recordIntent = new Intent(activityThis, ModifyRecordActivity.class);
+                recordIntent.putExtra(getString(R.string.collection_id), collectionId);
                 recordIntent.putExtra(getString(R.string.collection_record), et_collection_detail_record.getText().toString());
                 startActivity(recordIntent);
                 break;
@@ -160,7 +163,7 @@ public class CollectionDetailActivity extends BaseActivity implements View.OnCli
         //更新view
         tv_collection_detail_dynasty.setText(getString(R.string.detail_item_detail_dynasty) + dynastyname);
         tv_collection_detail_length.setText(getString(R.string.detail_item_detail_length) + length + getString(R.string.detail_item_detail_cm));
-        tv_collection_detail_width.setText(getString(R.string.detail_item_detail_width) + getString(R.string.detail_item_detail_cm));
+        tv_collection_detail_width.setText(getString(R.string.detail_item_detail_width) + width + getString(R.string.detail_item_detail_cm));
         tv_collection_detail_height.setText(getString(R.string.detail_item_detail_height) + height + getString(R.string.detail_item_detail_cm));
         tv_collection_detail_weight.setText(getString(R.string.detail_item_detail_height) + weight + getString(R.string.detail_item_detail_g));
 
@@ -176,6 +179,11 @@ public class CollectionDetailActivity extends BaseActivity implements View.OnCli
         et_collection_detail_story.setText(storyStr);
 
         imageAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
     }
 
     class GoodsImageAdapter extends BaseAdapter {
