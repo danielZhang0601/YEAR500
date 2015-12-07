@@ -111,4 +111,11 @@ public class YearsAPI {
         ZAsyncHttpClient.get(context, url, responseHandler);
     }
 
+    ///updatesoubaseinfo?id=S1440165552428&dynastycode=11&lengths=17&wides=13&highs=18&weights=1200
+    public static void updateBaseInfo(Context context, String collectionId, String dynastyCode, String length, String width, String height, String weight, AsyncHttpResponseHandler responseHandler) {
+        String url = String.format("%s/updatesoubaseinfo?id=%s&dynastycode=%s&lengths=%s&wides=%s&highs=%s&weights=%s",
+                BASE_URL, collectionId, dynastyCode, length, width, height, weight);
+        ZAsyncHttpClient.get(context, url, responseHandler);
+    }
+
 }

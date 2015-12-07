@@ -54,6 +54,10 @@ public class YearDynasty {
         return ret;
     }
 
+    public String getNameByIndex(int index) {
+        return dynastys.get(index).getName();
+    }
+
     public String getCodeByName(String name) {
         String ret = null;
         for (int i = 0; i < dynastys.size(); i++) {
@@ -61,6 +65,14 @@ public class YearDynasty {
                 ret = dynastys.get(i).getCode();
         }
         return ret;
+    }
+
+    public List<String> getNameList() {
+        List<String> names = new ArrayList<>();
+        for (DynastyBean dynasty : dynastys) {
+            names.add(dynasty.getName());
+        }
+        return names;
     }
 
 }

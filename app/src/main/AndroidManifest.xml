@@ -87,6 +87,10 @@
         <activity
             android:name=".activities.ModifyStoryActivity"
             android:screenOrientation="portrait" />
+        <!--照片详细-->
+        <activity
+            android:name=".activities.ImageDetailActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

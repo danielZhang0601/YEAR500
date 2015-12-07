@@ -54,6 +54,9 @@ public class CollectionDetailActivity extends BaseActivity implements View.OnCli
     private List<ImageBean> images = new ArrayList<>();
     private List<RecordBean> records = new ArrayList<>();
 
+    String length, width, height, weight, dynastyname;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -131,6 +134,14 @@ public class CollectionDetailActivity extends BaseActivity implements View.OnCli
                 onBackPressed();
                 break;
             case R.id.rl_collection_detail_modify_base_info:
+                Intent baseInfoIntent = new Intent(activityThis, ModifyBaseInfoActivity.class);
+                baseInfoIntent.putExtra(getString(R.string.collection_id), collectionId);
+                baseInfoIntent.putExtra(getString(R.string.collection_dynasty), dynastyname);
+                baseInfoIntent.putExtra(getString(R.string.collection_length), length);
+                baseInfoIntent.putExtra(getString(R.string.collection_width), width);
+                baseInfoIntent.putExtra(getString(R.string.collection_height), height);
+                baseInfoIntent.putExtra(getString(R.string.collection_weight), weight);
+                startActivity(baseInfoIntent);
                 break;
             case R.id.rl_collection_detail_modify_record:
                 Intent recordIntent = new Intent(activityThis, ModifyRecordActivity.class);
@@ -149,11 +160,11 @@ public class CollectionDetailActivity extends BaseActivity implements View.OnCli
 
     private void updateView(JSONObject response) throws JSONException {
         JSONObject baseInfo = response.getJSONObject(getString(R.string.json_sou_base_info));
-        String length = baseInfo.has(getString(R.string.json_length)) ? ("  " + baseInfo.getString(getString(R.string.json_length))) : "    ";
-        String width = baseInfo.has(getString(R.string.json_width)) ? ("  " + baseInfo.getString(getString(R.string.json_width))) : "    ";
-        String height = baseInfo.has(getString(R.string.json_height)) ? ("  " + baseInfo.getString(getString(R.string.json_height))) : "    ";
-        String weight = baseInfo.has(getString(R.string.json_weight)) ? ("  " + baseInfo.getString(getString(R.string.json_weight))) : "    ";
-        String dynastyname = baseInfo.has(getString(R.string.json_dynasty_name)) ? ("  " + baseInfo.getString(getString(R.string.json_dynasty_name)) + "  ") : "    ";
+        length = baseInfo.has(getString(R.string.json_length)) ? ("  " + baseInfo.getString(getString(R.string.json_length))) : "    ";
+        width = baseInfo.has(getString(R.string.json_width)) ? ("  " + baseInfo.getString(getString(R.string.json_width))) : "    ";
+        height = baseInfo.has(getString(R.string.json_height)) ? ("  " + baseInfo.getString(getString(R.string.json_height))) : "    ";
+        weight = baseInfo.has(getString(R.string.json_weight)) ? ("  " + baseInfo.getString(getString(R.string.json_weight))) : "    ";
+        dynastyname = baseInfo.has(getString(R.string.json_dynasty_name)) ? ("  " + baseInfo.getString(getString(R.string.json_dynasty_name)) + "  ") : "    ";
         images.clear();
         images.addAll(JSON.parseArray(response.getString(getString(R.string.json_sou_images_list)), ImageBean.class));
         images.add(new ImageBean(true));
@@ -183,7 +194,14 @@ public class CollectionDetailActivity extends BaseActivity implements View.OnCli
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        if (null != images.get(position).getImageorigurl()) {
+            Intent intent = new Intent(activityThis, ImageDetailActivity.class);
+            String url = "http://image5.huangye88.com/2014/11/12/120b3529e7eb3c55.jpg";
+            intent.putExtra(getString(R.string.collection_image_url), url);
+            startActivity(intent);
+        } else {
+            //跳转到相机
+        }
     }
 
     class GoodsImageAdapter extends BaseAdapter {

@@ -11,6 +11,12 @@
     <!--数据传递-->
     <string name="collection_id">CollectionId</string>
     <string name="create_collection">CreateCollection</string>
+    <string name="collection_image_url">CollectionImageUrl</string>
+    <string name="collection_dynasty">CollectionDynasty</string>
+    <string name="collection_length">CollectionLength</string>
+    <string name="collection_width">CollectionWidth</string>
+    <string name="collection_height">CollectionHeight</string>
+    <string name="collection_weight">CollectionWeight</string>
     <string name="collection_record">CollectionRecord</string>
     <string name="collection_story">CollectionStory</string>
 
@@ -83,7 +89,12 @@
     <string name="detail_item_detail_cm">cm</string>
     <string name="detail_item_detail_g">g</string>
 
+    <!--图片详细-->
+    <string name="image_detail_title">图片详情</string>
+    <string name="image_detail_done_text">拍照</string>
+
     <!--物品修改界面-->
+    <string name="modify_title">修改物品信息</string>
     <string name="modify_title_done_text">确定</string>
 
     <!--登录界面-->
