@@ -92,6 +92,22 @@
         <activity
             android:name=".activities.ImageDetailActivity"
             android:screenOrientation="portrait" />
+
+        <!--个人数据中心-->
+        <activity
+            android:name=".activities.MeActivity"
+            android:screenOrientation="portrait" />
+
+        <!--个人资料-->
+        <activity
+            android:name=".activities.AccountInfoActivity"
+            android:screenOrientation="portrait" />
+
+        <!--修改密码-->
+        <activity
+            android:name=".activities.ModifyPasswordActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

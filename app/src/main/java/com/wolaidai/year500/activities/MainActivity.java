@@ -19,9 +19,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.iv_activity_back).setVisibility(View.GONE);
         ((TextView) findViewById(R.id.tv_activity_title)).setText(R.string.main_title);
         // init view
-        findViewById(R.id.btn_main_learn).setOnClickListener(this);
         findViewById(R.id.btn_main_mine).setOnClickListener(this);
-        findViewById(R.id.btn_main_service).setOnClickListener(this);
+        findViewById(R.id.btn_main_me).setOnClickListener(this);
         findViewById(R.id.btn_main_show).setOnClickListener(this);
     }
 
@@ -34,8 +33,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_main_learn:
-            case R.id.btn_main_service:
+            case R.id.btn_main_me:
+                MeActivity.launch(v.getContext(), null);
+                break;
             case R.id.btn_main_show:
                 Toast.makeText(activityThis, R.string.to_be_continued, Toast.LENGTH_SHORT).show();
                 break;

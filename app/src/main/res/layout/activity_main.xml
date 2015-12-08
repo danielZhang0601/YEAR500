@@ -68,18 +68,6 @@
 
             </LinearLayout>
 
-            <!--<Button-->
-                <!--android:id="@+id/btn_main_mine"-->
-                <!--android:layout_width="@dimen/main_button_width"-->
-                <!--android:layout_height="@dimen/main_button_height"-->
-                <!--android:layout_marginLeft="@dimen/main_button_margin"-->
-                <!--android:background="@drawable/button_round_blue_press"-->
-                <!--android:drawableTop="@mipmap/shaibao"-->
-                <!--android:text="@string/main_button_mine"-->
-                <!--android:textColor="@color/white"-->
-                <!--android:textSize="@dimen/main_button_text_size"-->
-                <!--android:textStyle="bold" />-->
-
         </LinearLayout>
 
         <LinearLayout
@@ -101,18 +89,29 @@
                 android:textStyle="bold"
                 android:visibility="invisible" />
 
-            <Button
-                android:id="@+id/btn_main_learn"
+            <LinearLayout
+                android:id="@+id/btn_main_me"
                 android:layout_width="@dimen/main_button_width"
                 android:layout_height="@dimen/main_button_height"
                 android:layout_marginLeft="@dimen/main_button_margin"
-                android:background="@drawable/button_round_violet_press"
-                android:padding="@dimen/activity_horizontal_margin"
-                android:text="@string/main_button_learn"
-                android:textColor="@color/white"
-                android:textSize="@dimen/main_button_text_size"
-                android:textStyle="bold"
-                android:visibility="invisible" />
+                android:background="@drawable/button_round_red_press"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/main_image_size"
+                    android:layout_height="@dimen/main_image_size"
+                    android:src="@mipmap/gerenshuju" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/main_button_me"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/main_button_text_size"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>

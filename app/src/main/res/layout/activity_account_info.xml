@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/activity_title" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_control_height"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@drawable/image_border"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="@string/account_info_user_name"
+                android:textColor="@color/account_info_text_color"
+                android:textSize="@dimen/main_button_text_size" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:background="@color/account_info_edit_background" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_control_height"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/image_border"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="@string/account_info_nick_name"
+                android:textColor="@color/account_info_text_color"
+                android:textSize="@dimen/main_button_text_size" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:background="@color/account_info_edit_background" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_control_height"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/image_border"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="@string/account_info_cellphone"
+                android:textColor="@color/account_info_text_color"
+                android:textSize="@dimen/main_button_text_size" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:background="@color/account_info_edit_background" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_control_height"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/image_border"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="@string/account_info_email"
+                android:textColor="@color/account_info_text_color"
+                android:textSize="@dimen/main_button_text_size" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:background="@color/account_info_edit_background" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_control_height"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/image_border"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="@string/account_info_cellphone"
+                android:textColor="@color/account_info_text_color"
+                android:textSize="@dimen/main_button_text_size" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:background="@color/account_info_edit_background" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_control_height"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/image_border"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="@string/account_info_we_chat"
+                android:textColor="@color/account_info_text_color"
+                android:textSize="@dimen/main_button_text_size" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:background="@color/account_info_edit_background" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_control_height"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/image_border"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@color/white"
+                android:gravity="center"
+                android:text="@string/account_info_sign_in"
+                android:textColor="@color/account_info_text_color"
+                android:textSize="@dimen/main_button_text_size" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:background="@color/account_info_edit_background" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</ScrollView>

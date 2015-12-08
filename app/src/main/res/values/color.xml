@@ -24,6 +24,8 @@
     <color name="main_button_dark_green">#10AC06</color>
     <color name="main_button_light_green">#1BFF60</color>
 
+    <color name="account_info_text_color">#DC4C58</color>
+    <color name="account_info_edit_background">#FFCCCC</color>
 
     <color name="mine_button_dark_grey">#666666</color>
     <color name="mine_button_light_grey">#BBBBBB</color>
