@@ -85,7 +85,6 @@ public class CollectionDetailActivity extends BaseActivity implements View.OnCli
         tv_collection_detail_height = (TextView) findViewById(R.id.tv_collection_detail_height);
         tv_collection_detail_weight = (TextView) findViewById(R.id.tv_collection_detail_weight);
         collectionId = getIntent().getStringExtra(getString(R.string.collection_id));
-        collectionId = "S1440165538460";
         isCreate = getIntent().getBooleanExtra(getString(R.string.create_collection), true);
     }
 
@@ -93,8 +92,12 @@ public class CollectionDetailActivity extends BaseActivity implements View.OnCli
     protected void onStart() {
         super.onStart();
         ll_collection_detail_scroll_root.requestFocus();
-        if (null != collectionId && collectionId.isEmpty())
+        if (null == collectionId || collectionId.isEmpty()) {
+            images.clear();
+            images.add(new ImageBean(true));
+            imageAdapter.notifyDataSetChanged();
             return;
+        }
         loadDialog = new ProgressDialog(activityThis);
         loadDialog.setMessage(getString(R.string.detail_item_info_loading));
         loadDialog.setCancelable(false);
@@ -135,12 +138,14 @@ public class CollectionDetailActivity extends BaseActivity implements View.OnCli
                 break;
             case R.id.rl_collection_detail_modify_base_info:
                 Intent baseInfoIntent = new Intent(activityThis, ModifyBaseInfoActivity.class);
-                baseInfoIntent.putExtra(getString(R.string.collection_id), collectionId);
-                baseInfoIntent.putExtra(getString(R.string.collection_dynasty), dynastyname);
-                baseInfoIntent.putExtra(getString(R.string.collection_length), length);
-                baseInfoIntent.putExtra(getString(R.string.collection_width), width);
-                baseInfoIntent.putExtra(getString(R.string.collection_height), height);
-                baseInfoIntent.putExtra(getString(R.string.collection_weight), weight);
+                if (null != collectionId && !collectionId.isEmpty()) {
+                    baseInfoIntent.putExtra(getString(R.string.collection_id), collectionId);
+                    baseInfoIntent.putExtra(getString(R.string.collection_dynasty), dynastyname);
+                    baseInfoIntent.putExtra(getString(R.string.collection_length), length);
+                    baseInfoIntent.putExtra(getString(R.string.collection_width), width);
+                    baseInfoIntent.putExtra(getString(R.string.collection_height), height);
+                    baseInfoIntent.putExtra(getString(R.string.collection_weight), weight);
+                }
                 startActivity(baseInfoIntent);
                 break;
             case R.id.rl_collection_detail_modify_record:
@@ -200,7 +205,8 @@ public class CollectionDetailActivity extends BaseActivity implements View.OnCli
             intent.putExtra(getString(R.string.collection_image_url), url);
             startActivity(intent);
         } else {
-            //跳转到相机
+            Intent intent = new Intent(activityThis, ImageDetailActivity.class);
+            startActivity(intent);
         }
     }
 

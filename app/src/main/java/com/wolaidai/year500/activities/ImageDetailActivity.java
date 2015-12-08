@@ -1,8 +1,11 @@
 package com.wolaidai.year500.activities;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -19,6 +22,8 @@ import org.apache.http.Header;
  */
 public class ImageDetailActivity extends BaseActivity implements View.OnClickListener {
 
+    public static final int CameraRequest = 300;
+
     private ProgressBar pb_image_detail;
     private ImageView iv_image_detail;
 
@@ -32,40 +37,45 @@ public class ImageDetailActivity extends BaseActivity implements View.OnClickLis
         findViewById(R.id.rl_activity_done).setOnClickListener(this);
         pb_image_detail = (ProgressBar) findViewById(R.id.pb_image_detail);
         iv_image_detail = (ImageView) findViewById(R.id.iv_image_detail);
-        YearsAPI.getImage(activityThis, getIntent().getStringExtra(getString(R.string.collection_image_url)), new AsyncHttpResponseHandler() {
 
-            @Override
-            public void onStart() {
-                super.onStart();
-                pb_image_detail.setVisibility(View.VISIBLE);
-            }
+        String imageUrl = getIntent().getStringExtra(getString(R.string.collection_image_url));
+        if (null != imageUrl) {
 
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] bytes) {
-                if (statusCode == 200) {
-                    BitmapFactory bitmapFactory = new BitmapFactory();
-                    BitmapFactory.Options opt = new BitmapFactory.Options();
-                    opt.inJustDecodeBounds = true;
-                    bitmapFactory.decodeByteArray(bytes, 0, bytes.length, opt);
-                    opt.inSampleSize = Math.max(opt.outWidth / (iv_image_detail.getWidth() == 0 ? 200 : iv_image_detail.getWidth()), opt.outHeight / (iv_image_detail.getHeight() == 0 ? 200 : iv_image_detail.getHeight()));
-                    opt.inJustDecodeBounds = false;
-                    Bitmap bitmap = bitmapFactory.decodeByteArray(bytes, 0, bytes.length, opt);
-                    iv_image_detail.setImageBitmap(bitmap);
-                    iv_image_detail.setVisibility(View.VISIBLE);
+            YearsAPI.getImage(activityThis, imageUrl, new AsyncHttpResponseHandler() {
+
+                @Override
+                public void onStart() {
+                    super.onStart();
+                    pb_image_detail.setVisibility(View.VISIBLE);
                 }
-            }
 
-            @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] bytes, Throwable throwable) {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, byte[] bytes) {
+                    if (statusCode == 200) {
+                        BitmapFactory bitmapFactory = new BitmapFactory();
+                        BitmapFactory.Options opt = new BitmapFactory.Options();
+                        opt.inJustDecodeBounds = true;
+                        bitmapFactory.decodeByteArray(bytes, 0, bytes.length, opt);
+                        opt.inSampleSize = Math.max(opt.outWidth / (iv_image_detail.getWidth() == 0 ? 200 : iv_image_detail.getWidth()), opt.outHeight / (iv_image_detail.getHeight() == 0 ? 200 : iv_image_detail.getHeight()));
+                        opt.inJustDecodeBounds = false;
+                        Bitmap bitmap = bitmapFactory.decodeByteArray(bytes, 0, bytes.length, opt);
+                        iv_image_detail.setImageBitmap(bitmap);
+                        iv_image_detail.setVisibility(View.VISIBLE);
+                    }
+                }
 
-            }
+                @Override
+                public void onFailure(int statusCode, Header[] headers, byte[] bytes, Throwable throwable) {
 
-            @Override
-            public void onFinish() {
-                super.onFinish();
-                pb_image_detail.setVisibility(View.INVISIBLE);
-            }
-        });
+                }
+
+                @Override
+                public void onFinish() {
+                    super.onFinish();
+                    pb_image_detail.setVisibility(View.INVISIBLE);
+                }
+            });
+        }
     }
 
     @Override
@@ -76,7 +86,24 @@ public class ImageDetailActivity extends BaseActivity implements View.OnClickLis
                 break;
             case R.id.rl_activity_done:
                 //跳转到相机
+                startCamera();
                 break;
+        }
+    }
+
+    private void startCamera() {
+        Intent intent = new Intent();
+        intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+        activityThis.startActivityForResult(intent, CameraRequest);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CameraRequest && resultCode == Activity.RESULT_OK) {
+            Bitmap bitmap = data.getParcelableExtra("data");
+            iv_image_detail.setImageBitmap(bitmap);
+            iv_image_detail.setVisibility(View.VISIBLE);
+            //上传功能等待
         }
     }
 }

@@ -52,6 +52,7 @@ public class YearsAPI {
         ZAsyncHttpClient.get(context, url, responseHandler);
     }
 
+
     public static void getCollectionDetail(Context context, String collectionId, AsyncHttpResponseHandler responseHandler) {
         String url = String.format("%s/souinfo?souid=%s", BASE_URL, collectionId);
         ZAsyncHttpClient.get(context, url, responseHandler);

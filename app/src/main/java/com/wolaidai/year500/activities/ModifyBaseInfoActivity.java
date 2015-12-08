@@ -61,10 +61,13 @@ public class ModifyBaseInfoActivity extends BaseActivity implements View.OnClick
     }
 
     private void updateSpinner() {
-        String dynasty = getIntent().getStringExtra(getString(R.string.collection_dynasty)).trim();
-        for (int i = 0; i < YearDynasty.getInstance().getNameList().size(); i++) {
-            if (YearDynasty.getInstance().getNameList().get(i).equals(dynasty))
-                acs_modify_base_dynasty.setSelection(i, true);
+        String dynasty = getIntent().getStringExtra(getString(R.string.collection_dynasty));
+        if (null != dynasty) {
+            dynasty = dynasty.trim();
+            for (int i = 0; i < YearDynasty.getInstance().getNameList().size(); i++) {
+                if (YearDynasty.getInstance().getNameList().get(i).equals(dynasty))
+                    acs_modify_base_dynasty.setSelection(i, true);
+            }
         }
     }
 
